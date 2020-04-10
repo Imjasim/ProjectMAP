@@ -7,13 +7,7 @@ class Profile extends StatelessWidget {
       debugShowCheckedModeBanner: false,
 
       home:Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          title: Text('One UTM'),
-           backgroundColor: Colors.pink[900], 
-          ),
-        
-        body: Container (
+          body: Container (
           color: Colors.pink[600],
           child: Center(
           child: Column(
