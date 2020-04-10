@@ -7,9 +7,10 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+
       home:Scaffold(
         body: Container (
-          color: Colors.pink[300],
+          color: Colors.pink[600],
           child: Column(
           children: <Widget> [
             _buildContent('Confession', 'Place to inform'),
