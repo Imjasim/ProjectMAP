@@ -14,6 +14,7 @@ void main() => runApp(MaterialApp(
         "/main": (_) => MyApp(),
         "/splash": (_) => MYsplash(),
         "/Logout": (_) => Logout(),
+        "/MyCustomForm": (_) => MyCustomForm(),
       },
 ));
 
