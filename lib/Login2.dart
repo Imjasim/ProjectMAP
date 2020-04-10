@@ -1,33 +1,76 @@
+
+
 import 'package:flutter/material.dart';
-import 'main.dart';
 
 
 
+
+
+void main() => runApp(MyApp());
+class MyApp extends StatelessWidget {
+      
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Retrieve Text Input',
+      home: MyCustomForm(),
+    );
+  }
+}
+
+TextStyle style = TextStyle(fontFamily: 'Montserrat', fontSize: 20.0);
+class MyCustomForm extends StatefulWidget {
+  @override
+  _MyCustomFormState createState() => _MyCustomFormState();
+}
    
-    class Login extends StatelessWidget {
-      TextStyle style = TextStyle(fontFamily: 'Montserrat', fontSize: 20.0);
+    class  _MyCustomFormState extends State<MyCustomForm> {
+    
+    final myController =TextEditingController() ; 
+    final myController2 =TextEditingController();
+    @override
+    void dispose () {
+      myController.dispose() ;
+      myController2.dispose() ; 
+      super.dispose(); 
+    }
 
       @override
+      
       Widget build(BuildContext context) {
-
+        
+        
         final emailField = TextField(
+          controller: myController,
           obscureText: false,
           style: style,
           decoration: InputDecoration(
               contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-              hintText: "Email",
+              labelText: "Enter your email",
               border:
                   OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
         );
-        final passwordField = TextField(
+        final  passwordField = TextField(
+          controller: myController2,
           obscureText: true,
           style: style,
           decoration: InputDecoration(
               contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-              hintText: "Password",
+              labelText: "Enter your Password",
               border:
                   OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
         );
+          /*void someFunction(){
+              var   user1 = 'user1'     ;
+      
+      
+                if ( myController.text == user1 ) {
+                    Navigator.pushReplacementNamed(
+              context,
+              "/splash");
+              } 
+          }*/
         final loginButon = Material(
           elevation: 5.0,
           borderRadius: BorderRadius.circular(30.0),
@@ -36,10 +79,18 @@ import 'main.dart';
             minWidth: MediaQuery.of(context).size.width,
             padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
             onPressed: () {
-            Navigator.pushReplacementNamed(
+                if ( myController.text == "user1" && myController2.text =="userOne" ){
+                   Navigator.pushReplacementNamed(
               context,
-              "/splash"
-            );
+              "/splash");
+                } else {
+                    Navigator.pushReplacementNamed(
+              context,
+              "/MyCustomForm");
+                }
+          
+            
+           
           },
             child: Text("Login",
                 textAlign: TextAlign.center,
@@ -50,8 +101,8 @@ import 'main.dart';
 
         return Scaffold(
           body: Center(
-            child: Container(
-              color: Colors.white,
+            child: Container( 
+              color: Colors.grey[100],
               child: Padding(
                 padding: const EdgeInsets.all(36.0),
                 child: Column(
@@ -86,46 +137,6 @@ import 'main.dart';
     }
 
 
-<<<<<<< HEAD
-# The following section is specific to Flutter.
-flutter:
-
-  # The following line ensures that the Material Icons font is
-  # included with your application, so that you can use the icons in
-  # the material Icons class.
-  uses-material-design: true
-
-  # To add assets to your application, add an assets section, like this:
-  assets:
-   - assets/logo.png
-  #  - images/a_dot_ham.jpeg
-
-  # An image asset can refer to one or more resolution-specific "variants", see
-  # https://flutter.dev/assets-and-images/#resolution-aware.
-
-  # For details regarding adding assets from package dependencies, see
-  # https://flutter.dev/assets-and-images/#from-packages
-
-  # To add custom fonts to your application, add a fonts section here,
-  # in this "flutter" section. Each entry in this list should have a
-  # "family" key with the font family name, and a "fonts" key with a
-  # list giving the asset and other descriptors for the font. For
-  # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
-  #
-  # For details regarding fonts from package dependencies,
-  # see https://flutter.dev/custom-fonts/#from-packages
-=======
     
 /*class Login extends StatelessWidget{
   @override
@@ -151,4 +162,4 @@ flutter:
     );
   }
 } */
->>>>>>> 74cdb436e339dfe79f7d2d7274b515840d5e252a
+
