@@ -62,6 +62,11 @@ class MyAppState extends State<MyApp> {
   }
 }
 
+class MYsplash extends StatefulWidget {
+  @override
+  _State createState() => _State();
+}
+
 class _State extends State<MYsplash> {
 
   @override
