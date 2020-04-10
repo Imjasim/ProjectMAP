@@ -3,7 +3,7 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'Settings.dart';
 import 'Home.dart';
 import 'Profile.dart';
-import 'Login.dart';
+import 'MyCustomForm.dart';
 
 void main() => runApp(MaterialApp(
       debugShowCheckedModeBanner: false,
