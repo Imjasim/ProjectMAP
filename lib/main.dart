@@ -4,6 +4,8 @@ import 'Settings.dart';
 import 'Home.dart';
 import 'Profile.dart';
 import 'Login.dart';
+import 'Logout.dart';
+
 
 void main() => runApp(MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -11,6 +13,7 @@ void main() => runApp(MaterialApp(
       routes: {
         "/main": (_) => MyApp(),
         "/splash": (_) => MYsplash(),
+        "/Logout": (_) => Logout(),
       },
 ));
 

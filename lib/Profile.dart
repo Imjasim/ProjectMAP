@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+
 class Profile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -124,10 +125,14 @@ class Profile extends StatelessWidget {
                     )
                     ),
 
-                    Card(
+                    RaisedButton(
+                      onPressed:() {
+                        Navigator.pushReplacementNamed(
+              context,
+              "/Logout");
+                      } ,
                   color: Colors.pink[900],
-                  margin:
-                      EdgeInsets.symmetric(vertical: 8.0, horizontal: 115.0),
+                  
                   child: ListTile(
                     leading: Icon(
                       Icons.lock,

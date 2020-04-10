@@ -77,14 +77,14 @@ class MyCustomForm extends StatefulWidget {
             minWidth: MediaQuery.of(context).size.width,
             padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
             onPressed: () {
-                if ( myController.text == "user1" && myController2.text =="userOne" ){
+                if ( myController.text == "u1" && myController2.text =="u2" ){
                    Navigator.pushReplacementNamed(
               context,
               "/splash");
                 } else {
                     Navigator.pushReplacementNamed(
               context,
-              "/MyCustomForm");
+              "/Login");
                 }
           
             
