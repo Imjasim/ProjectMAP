@@ -38,7 +38,7 @@ import 'main.dart';
             onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => MyApp()),
+              MaterialPageRoute(builder: (context) => MYsplash()),
             );
           },
             child: Text("Login",
