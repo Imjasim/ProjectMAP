@@ -36,9 +36,9 @@ import 'main.dart';
             minWidth: MediaQuery.of(context).size.width,
             padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
             onPressed: () {
-            Navigator.push(
+            Navigator.pushReplacementNamed(
               context,
-              MaterialPageRoute(builder: (context) => MyApp()),
+              "/splash"
             );
           },
             child: Text("Login",

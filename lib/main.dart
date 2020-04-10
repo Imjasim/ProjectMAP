@@ -8,6 +8,10 @@ import 'Login.dart';
 void main() => runApp(MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Login(),
+      routes: {
+        "/main": (_) => MyApp(),
+        "/splash": (_) => MYsplash(),
+      },
 ));
 
 class MyApp extends StatefulWidget {
@@ -34,14 +38,15 @@ class MyAppState extends State<MyApp> {
         backgroundColor: Colors.pink[900],
         ),
         body: Container (
-          color: Colors.pink[600],
+          color: Colors.blue[700],
           child: _pageOptions[_selectedPage],
         ),
 
         bottomNavigationBar: CurvedNavigationBar(
-        backgroundColor: Colors.pink[600],
-       color: Colors.brown,
-       buttonBackgroundColor: Colors.orange,
+          index: 1,
+        backgroundColor: Colors.pink[300],
+        color: Colors.pink[900],
+        buttonBackgroundColor: Colors.orange,
         items: <Widget>[
           Icon(Icons.settings, size: 30),
           Icon(Icons.home, size: 50),
@@ -59,4 +64,39 @@ class MyAppState extends State<MyApp> {
        ),
     );
   }
+}
+
+class MYsplash extends StatefulWidget {
+  @override
+  _State createState() => _State();
+}
+
+class _State extends State<MYsplash> {
+
+  @override
+  void initState() {
+    
+    super.initState();
+    Future.delayed
+    (Duration(seconds: 3),
+    (){
+      Navigator.pushReplacementNamed(context, "/main" );
+    }
+    );
+  }
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+     backgroundColor: Colors.grey,
+      body: new Stack(
+        fit: StackFit.expand,
+        children: <Widget>[
+          new Image(
+            image: new AssetImage("assets/logo.png"),
+            fit: BoxFit.cover,
+          )
+        ],
+      ),
+    );
+}
 }
