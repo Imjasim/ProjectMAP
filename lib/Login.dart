@@ -4,7 +4,7 @@ import 'package:flutter/material.dart' ;
 
 
 
-void main() => runApp(MyApp());
+/*void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
       
 
@@ -15,15 +15,15 @@ class MyApp extends StatelessWidget {
       home: MyCustomForm(),
     );
   }
-}
+}*/
 
 TextStyle style = TextStyle(fontFamily: 'Montserrat', fontSize: 20.0);
-class MyCustomForm extends StatefulWidget {
+class Login extends StatefulWidget {
   @override
   _MyCustomFormState createState() => _MyCustomFormState();
 }
    
-    class  _MyCustomFormState extends State<MyCustomForm> {
+    class  _MyCustomFormState extends State<Login> {
     
     final myController =TextEditingController() ; 
     final myController2 =TextEditingController();

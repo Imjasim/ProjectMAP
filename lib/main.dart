@@ -9,12 +9,12 @@ import 'Logout.dart';
 
 void main() => runApp(MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: MyCustomForm(),
+      home: Login(),
       routes: {
         "/main": (_) => MyApp(),
         "/splash": (_) => MYsplash(),
         "/Logout": (_) => Logout(),
-        "/MyCustomForm": (_) => MyCustomForm(),
+        "/Login": (_) => Login(),
       },
 ));
 

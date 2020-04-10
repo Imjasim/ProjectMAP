@@ -67,7 +67,7 @@ class _MyHomePageState extends State<Logout> {
                       onPressed: (){
                                     Navigator.pushReplacementNamed(
                                           context,
-                                            "/Main");
+                                            "/main");
                                             },
                                               )
                                                  ],
