@@ -54,7 +54,7 @@ class _MyHomePageState extends State<Logout> {
                                       onPressed: (){
                                         Navigator.pushReplacementNamed(
                                           context,
-                                            "/MyCustomForm");
+                                            "/Login");
                                       })
                                   ],
                                     );
@@ -67,7 +67,7 @@ class _MyHomePageState extends State<Logout> {
                       onPressed: (){
                                     Navigator.pushReplacementNamed(
                                           context,
-                                            "/main");
+                                            "/Main");
                                             },
                                               )
                                                  ],

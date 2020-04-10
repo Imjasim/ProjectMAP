@@ -11,7 +11,7 @@ class Profile extends StatelessWidget {
           body: Container (
           color: Colors.pink[600],
           child: Center(
-          child: new ListView(
+          child: ListView(
               //mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 CircleAvatar(
