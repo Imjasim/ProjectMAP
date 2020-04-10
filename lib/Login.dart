@@ -1,33 +1,75 @@
+
+
 import 'package:flutter/material.dart';
-import 'main.dart';
 
 
 
+
+void main() => runApp(MyApp());
+class MyApp extends StatelessWidget {
+      
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Retrieve Text Input',
+      home: MyCustomForm(),
+    );
+  }
+}
+
+TextStyle style = TextStyle(fontFamily: 'Montserrat', fontSize: 20.0);
+class MyCustomForm extends StatefulWidget {
+  @override
+  _MyCustomFormState createState() => _MyCustomFormState();
+}
    
-    class Login extends StatelessWidget {
-      TextStyle style = TextStyle(fontFamily: 'Montserrat', fontSize: 20.0);
+    class  _MyCustomFormState extends State<MyCustomForm> {
+    
+    final myController =TextEditingController() ; 
+    final myController2 =TextEditingController();
+    @override
+    void dispose () {
+      myController.dispose() ;
+      myController2.dispose() ; 
+      super.dispose(); 
+    }
 
       @override
+      
       Widget build(BuildContext context) {
-
+        
+        
         final emailField = TextField(
+          controller: myController,
           obscureText: false,
           style: style,
           decoration: InputDecoration(
               contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-              hintText: "Email",
+              labelText: "Enter your email",
               border:
                   OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
         );
-        final passwordField = TextField(
+        final  passwordField = TextField(
+          controller: myController2,
           obscureText: true,
           style: style,
           decoration: InputDecoration(
               contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-              hintText: "Password",
+              labelText: "Enter your Password",
               border:
                   OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
         );
+          /*void someFunction(){
+              var   user1 = 'user1'     ;
+      
+      
+                if ( myController.text == user1 ) {
+                    Navigator.pushReplacementNamed(
+              context,
+              "/splash");
+              } 
+          }*/
         final loginButon = Material(
           elevation: 5.0,
           borderRadius: BorderRadius.circular(30.0),
@@ -36,10 +78,17 @@ import 'main.dart';
             minWidth: MediaQuery.of(context).size.width,
             padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
             onPressed: () {
-            Navigator.push(
+                if ( myController.text == "user1" && myController2.text =="userOne" ){
+                   Navigator.pushReplacementNamed(
               context,
-              MaterialPageRoute(builder: (context) => MYsplash()),
-            );
+              "/splash");
+                } else {
+                    Navigator.pushReplacementNamed(
+              context,
+              "/MyCustomForm");
+                }
+          
+            
           },
             child: Text("Login",
                 textAlign: TextAlign.center,
@@ -50,8 +99,8 @@ import 'main.dart';
 
         return Scaffold(
           body: Center(
-            child: Container(
-              color: Colors.white,
+            child: Container( 
+              color: Colors.grey[100],
               child: Padding(
                 padding: const EdgeInsets.all(36.0),
                 child: Column(
@@ -111,3 +160,4 @@ import 'main.dart';
     );
   }
 } */
+

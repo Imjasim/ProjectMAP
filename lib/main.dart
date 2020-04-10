@@ -7,7 +7,11 @@ import 'Login.dart';
 
 void main() => runApp(MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Login(),
+      home: MyCustomForm(),
+      routes: {
+        "/main": (_) => MyApp(),
+        "/splash": (_) => MYsplash(),
+      },
 ));
 
 class MyApp extends StatefulWidget {
@@ -76,9 +80,7 @@ class _State extends State<MYsplash> {
     Future.delayed
     (Duration(seconds: 3),
     (){
-      Navigator.push(context, MaterialPageRoute(builder: (context) => Home(),
-      ),
-      );
+      Navigator.pushReplacementNamed(context, "/main" );
     }
     );
   }
