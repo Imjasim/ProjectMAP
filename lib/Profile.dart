@@ -11,8 +11,8 @@ class Profile extends StatelessWidget {
           body: Container (
           color: Colors.pink[600],
           child: Center(
-          child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+          child: new ListView(
+              //mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 CircleAvatar(
                   radius: 65,
@@ -34,6 +34,7 @@ class Profile extends StatelessWidget {
                     color: Colors.white,
                     letterSpacing: 2.0,
                   ),
+                  textAlign: TextAlign.center,
                 ),
                 
                 SizedBox(
