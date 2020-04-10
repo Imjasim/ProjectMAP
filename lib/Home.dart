@@ -9,7 +9,7 @@ class Home extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home:Scaffold(
         body: Container (
-          color: Colors.pink[600],
+          color: Colors.pink[300],
           child: Column(
           children: <Widget> [
             _buildContent('Confession', 'Place to inform'),
