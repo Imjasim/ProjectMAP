@@ -1,102 +1,160 @@
 import 'package:flutter/material.dart';
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-import 'Settings.dart';
-import 'Home.dart';
-import 'Profile.dart';
-import 'Login.dart';
 
-void main() => runApp(MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Login(),
-      routes: {
-        "/main": (_) => MyApp(),
-        "/splash": (_) => MYsplash(),
-      },
-));
 
-class MyApp extends StatefulWidget {
+
+
+void main() => runApp(MyApp());
+class MyApp extends StatelessWidget {
+      
+
   @override
-  MyAppState createState(){
-    return MyAppState();
-  }
-}
-
-class MyAppState extends State<MyApp> {
-  int _selectedPage = 1;
-  final _pageOptions = [
-    Settings(),
-    Home(),
-    Profile(),
-  ];
-
-@override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          title: Text('One UTM'),
-        backgroundColor: Colors.pink[900],
-        ),
-        body: Container (
-          color: Colors.blue[700],
-          child: _pageOptions[_selectedPage],
-        ),
-
-        bottomNavigationBar: CurvedNavigationBar(
-          index: 1,
-        backgroundColor: Colors.pink[300],
-        color: Colors.pink[900],
-        buttonBackgroundColor: Colors.orange,
-        items: <Widget>[
-          Icon(Icons.settings, size: 30),
-          Icon(Icons.home, size: 50),
-          Icon(Icons.person, size: 30),
-        ],
-       animationDuration: Duration(
-         milliseconds: 500
-        ),
-       animationCurve: Curves.ease,
-        onTap: (index) {
-                setState(() {
-                _selectedPage = index;
-             });
-          },
-       ),
+    return MaterialApp(
+      title: 'Retrieve Text Input',
+      home: MyCustomForm(),
     );
   }
 }
 
-class MYsplash extends StatefulWidget {
+TextStyle style = TextStyle(fontFamily: 'Montserrat', fontSize: 20.0);
+class MyCustomForm extends StatefulWidget {
   @override
-  _State createState() => _State();
+  _MyCustomFormState createState() => _MyCustomFormState();
 }
-
-class _State extends State<MYsplash> {
-
-  @override
-  void initState() {
+   
+    class  _MyCustomFormState extends State<MyCustomForm> {
     
-    super.initState();
-    Future.delayed
-    (Duration(seconds: 3),
-    (){
-      Navigator.pushReplacementNamed(context, "/main" );
+    final myController =TextEditingController() ; 
+    final myController2 =TextEditingController();
+    @override
+    void dispose () {
+      myController.dispose() ;
+      myController2.dispose() ; 
+      super.dispose(); 
     }
-    );
-  }
+
+      @override
+      
+      Widget build(BuildContext context) {
+        
+        
+        final emailField = TextField(
+          controller: myController,
+          obscureText: false,
+          style: style,
+          decoration: InputDecoration(
+              contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+              labelText: "Enter your email",
+              border:
+                  OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
+        );
+        final  passwordField = TextField(
+          controller: myController2,
+          obscureText: true,
+          style: style,
+          decoration: InputDecoration(
+              contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+              labelText: "Enter your Password",
+              border:
+                  OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
+        );
+          /*void someFunction(){
+              var   user1 = 'user1'     ;
+      
+      
+                if ( myController.text == user1 ) {
+                    Navigator.pushReplacementNamed(
+              context,
+              "/splash");
+              } 
+          }*/
+        final loginButon = Material(
+          elevation: 5.0,
+          borderRadius: BorderRadius.circular(30.0),
+          color: Color(0xff01A0C7),
+          child: MaterialButton(
+            minWidth: MediaQuery.of(context).size.width,
+            padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+            onPressed: () {
+                if ( myController.text == "user1" && myController2.text =="userOne" ){
+                   Navigator.pushReplacementNamed(
+              context,
+              "/splash");
+                } else {
+                    Navigator.pushReplacementNamed(
+              context,
+              "/MyCustomForm");
+                }
+          
+            
+          },
+            child: Text("Login",
+                textAlign: TextAlign.center,
+                style: style.copyWith(
+                    color: Colors.white, fontWeight: FontWeight.bold)),
+          ),
+        );
+
+        return Scaffold(
+          body: Center(
+            child: Container( 
+              color: Colors.grey[100],
+              child: Padding(
+                padding: const EdgeInsets.all(36.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    SizedBox(
+                      height: 155.0,
+                      child: Image.asset(
+                        "assets/logo.png",
+                        fit: BoxFit.contain,
+                      ),
+                    ),
+                    SizedBox(height: 45.0),
+                    emailField,
+                    SizedBox(height: 25.0),
+                    passwordField,
+                    SizedBox(
+                      height: 35.0,
+                    ),
+                    loginButon,
+                    SizedBox(
+                      height: 15.0,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        );
+      }
+    }
+
+
+    
+/*class Login extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-     backgroundColor: Colors.grey,
-      body: new Stack(
-        fit: StackFit.expand,
-        children: <Widget>[
-          new Image(
-            image: new AssetImage("assets/logo.png"),
-            fit: BoxFit.cover,
-          )
-        ],
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home:Scaffold(
+        body: Center(
+          child: Text('This is just a dummy Login page'),
+          ),
+          floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => MyApp()),
+            );
+          },
+        label: Text('Login'),
+        backgroundColor: Colors.blue,
+        icon: Icon(Icons.verified_user),
+        ),
       ),
     );
-}
-}
+  }
+} */
