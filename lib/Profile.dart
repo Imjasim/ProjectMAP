@@ -22,38 +22,39 @@ class MyApp extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 CircleAvatar(
-                  radius: 80,
-                  backgroundImage: AssetImage('images/profile.jpg'),
+                  radius: 65,
+                  backgroundImage: AssetImage('images/profile1.jpg'),
                 ),
                 Text(
                   '',
                   style: TextStyle(
                     fontFamily: 'SourceSansPro',
-                    fontSize: 20,
+                    fontSize: 15,
+                    letterSpacing: 2.0,                   
                   ),
                 ),
                 Text(
-                  'Welcome',
+                  'STUDENT',
                   style: TextStyle(
                     fontSize: 20,
                     fontFamily: 'SourceSansPro',
                     color: Colors.white,
-                    letterSpacing: 2.5,
+                    letterSpacing: 2.0,
                   ),
                 ),
+                
                 SizedBox(
-                  height: 20.0,
+                  height: 13.0,
                   width: 200,
                   child: Divider(
                     color: Colors.teal[100],
                   ),
                 ),
-                Text(""),
-
+                
                 Card(
                   color: Colors.white,
                   margin:
-                      EdgeInsets.symmetric(vertical: 10.0, horizontal: 25.0),
+                      EdgeInsets.symmetric(vertical: 5.0, horizontal: 50.0),
                   child: ListTile(
                     leading: Icon(
                       Icons.person,
@@ -61,7 +62,7 @@ class MyApp extends StatelessWidget {
                     ),
                     title: Text(
                       'NUR NABILA BINTI ZAKARIA',
-                      style: TextStyle(fontSize: 17.0, fontFamily: 'Neucha'),
+                      style: TextStyle(fontSize: 13.0, fontFamily: 'Neucha'),
                     ),
                   ),
                 ),
@@ -69,15 +70,15 @@ class MyApp extends StatelessWidget {
                 Card(
                   color: Colors.white,
                   margin:
-                      EdgeInsets.symmetric(vertical: 10.0, horizontal: 25.0),
+                      EdgeInsets.symmetric(vertical: 5.0, horizontal: 50.0),
                   child: ListTile(
                     leading: Icon(
                       Icons.keyboard,
                       color: Colors.teal[900],
                     ),
                     title: Text(
-                      'A17CS0159 (Student)',
-                      style: TextStyle(fontSize: 17.0, fontFamily: 'Neucha'),
+                      'A17CS0159',
+                      style: TextStyle(fontSize: 13.0, fontFamily: 'Neucha'),
                     ),
                   ),
                 ),
@@ -85,15 +86,15 @@ class MyApp extends StatelessWidget {
                 Card(
                   color: Colors.white,
                   margin:
-                      EdgeInsets.symmetric(vertical: 10.0, horizontal: 25.0),
+                      EdgeInsets.symmetric(vertical: 5.0, horizontal: 50.0),
                   child: ListTile(
                     leading: Icon(
                       Icons.school,
                       color: Colors.teal[900],
                     ),
                     title: Text(
-                      'Faculty of Engineering',
-                      style: TextStyle(fontSize: 17.0, fontFamily: 'Neucha'),
+                      'School of Computing',
+                      style: TextStyle(fontSize: 13.0, fontFamily: 'Neucha'),
                     ),
                   ),
                 ),
@@ -101,7 +102,7 @@ class MyApp extends StatelessWidget {
                 Card(
                   color: Colors.white,
                   margin:
-                      EdgeInsets.symmetric(vertical: 10.0, horizontal: 25.0),
+                      EdgeInsets.symmetric(vertical: 5.0, horizontal: 50.0),
                   child: ListTile(
                     leading: Icon(
                       Icons.email,
@@ -109,7 +110,7 @@ class MyApp extends StatelessWidget {
                     ),
                     title: Text(
                       'nabilazakaria13@gmail.com',
-                      style: TextStyle(fontSize: 17.0, fontFamily: 'Neucha'),
+                      style: TextStyle(fontSize: 13.0, fontFamily: 'Neucha'),
                     ),
                   ),
                 ),
@@ -117,7 +118,7 @@ class MyApp extends StatelessWidget {
                 Card(
                     color: Colors.white,
                     margin:
-                        EdgeInsets.symmetric(vertical: 10.0, horizontal: 25.0),
+                        EdgeInsets.symmetric(vertical: 5.0, horizontal: 50.0),
                     child: ListTile(
                       leading: Icon(
                         Icons.phone,
@@ -126,10 +127,27 @@ class MyApp extends StatelessWidget {
                       title: Text(
                         '+60123456789',
                         style:
-                            TextStyle(fontFamily: 'BalooBhai', fontSize: 17.0),
+                            TextStyle(fontFamily: 'BalooBhai', fontSize: 13.0),
                       ),
                     )
                     ),
+
+                    Card(
+                  color: Colors.pink[900],
+                  margin:
+                      EdgeInsets.symmetric(vertical: 8.0, horizontal: 115.0),
+                  child: ListTile(
+                    leading: Icon(
+                      Icons.lock,
+                      color: Colors.white,
+                    ),
+                    title: Text(
+                      'Sign Out',
+                      style: TextStyle(fontSize: 15.0, fontFamily: 'Neucha', color: Colors.white),
+                    ),
+                  ),
+                ),
+
 
               ],
             ),
