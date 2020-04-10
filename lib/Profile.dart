@@ -8,17 +8,11 @@ class Profile extends StatelessWidget {
       debugShowCheckedModeBanner: false,
 
       home:Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          title: Text('One UTM'),
-           backgroundColor: Colors.pink[900], 
-          ),
-        
-        body: Container (
+          body: Container (
           color: Colors.pink[600],
           child: Center(
-          child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+          child: ListView(
+              //mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 CircleAvatar(
                   radius: 65,
@@ -40,6 +34,7 @@ class Profile extends StatelessWidget {
                     color: Colors.white,
                     letterSpacing: 2.0,
                   ),
+                  textAlign: TextAlign.center,
                 ),
                 
                 SizedBox(
@@ -133,10 +128,8 @@ class Profile extends StatelessWidget {
 
                     RaisedButton(
                       onPressed:() {
-                        Navigator.pushReplacementNamed(
-              context,
-              "/Logout");
-                      } ,
+                        Navigator.pushReplacementNamed(context, "/Logout" );
+                      },
                   color: Colors.pink[900],
                   
                   child: ListTile(
