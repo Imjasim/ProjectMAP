@@ -10,6 +10,7 @@ class Login extends StatefulWidget {
     
     final myController =TextEditingController() ; 
     final myController2 =TextEditingController();
+    
     @override
     void dispose () {
       myController.dispose() ;
@@ -52,13 +53,9 @@ class Login extends StatefulWidget {
             padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
             onPressed: () {
                 if ( myController.text == "u1" && myController2.text =="u2" ){
-                   Navigator.pushReplacementNamed(
-              context,
-              "/splash");
+                   Navigator.pushReplacementNamed(context,"/splash");
                 } else {
-                    Navigator.pushReplacementNamed(
-              context,
-              "/Login");
+                   // Navigator.pushReplacementNamed(context,"/Login");
                 }
           
             

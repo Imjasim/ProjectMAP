@@ -9,8 +9,9 @@ class Settings extends StatefulWidget {
 
 
 class SettingsPage extends State<Settings> {
-  bool _lights = false;
-
+  bool _noti = true;
+  bool _news = false;
+  
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -31,8 +32,8 @@ class SettingsPage extends State<Settings> {
                       color: Colors.indigo,
                     ),
           ),
-          _buildSwitch('Receive Notification'),
-          _buildSwitch('Receive Newsletter'),
+          _buildSwitch('Receive Notification',_noti),
+          _buildSwitch('Receive Newsletter', _news),
           const SizedBox(height: 20.0),
           Card(
                     elevation: 4.0,
@@ -57,13 +58,17 @@ class SettingsPage extends State<Settings> {
     );
   }
 
-  Widget _buildSwitch (text) {
+
+
+  Widget _buildSwitch (text,_v) {
     return SwitchListTile(
             title: Text(text),
-            value: _lights,
-            onChanged: (val) {} ,
-            //secondary: const Icon(Icons.lightbulb_outline),
-        );
+            value: _v,
+            onChanged: (value)=>setState((){
+              _v=value;
+            }
+            ),
+          );
   }
 
   Container _buildDivider() {
