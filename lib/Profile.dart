@@ -12,7 +12,6 @@ class Profile extends StatelessWidget {
           color: Colors.pink[600],
           child: Center(
           child: ListView(
-              //mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 CircleAvatar(
                   radius: 65,
@@ -126,12 +125,14 @@ class Profile extends StatelessWidget {
                     )
                     ),
 
-                    RaisedButton(
+                    ButtonTheme(
+                      minWidth: 2.0,
+                      child: RaisedButton(
                       onPressed:() {
                         Navigator.pushReplacementNamed(context, "/Logout" );
                       },
-                  color: Colors.pink[900],
-                  
+                  color: Colors.black,
+                  elevation: 10.0,
                   child: ListTile(
                     leading: Icon(
                       Icons.lock,
@@ -143,6 +144,7 @@ class Profile extends StatelessWidget {
                     ),
                   ),
                 ),
+              ),
 
 
               ],

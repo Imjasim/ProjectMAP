@@ -36,8 +36,11 @@ class _MyHomePageState extends State<Logout> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Are you sure you want to log out ? "),
+        backgroundColor: Colors.pink[900],
         ),
-          body: Center(
+          body:  Container (
+          color: Colors.pink[600],
+          child: Center(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children:<Widget>[
@@ -73,6 +76,7 @@ class _MyHomePageState extends State<Logout> {
                                                  ],
                                                     ),
                                                       ),
+                                                        ),
                                                         );
                                                           }
                                                             }
