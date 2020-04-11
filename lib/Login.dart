@@ -1,22 +1,5 @@
 import 'package:flutter/material.dart' ;
 
-
-
-
-
-/*void main() => runApp(MyApp());
-class MyApp extends StatelessWidget {
-      
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Retrieve Text Input',
-      home: MyCustomForm(),
-    );
-  }
-}*/
-
 TextStyle style = TextStyle(fontFamily: 'Montserrat', fontSize: 20.0);
 class Login extends StatefulWidget {
   @override
@@ -59,16 +42,7 @@ class Login extends StatefulWidget {
               border:
                   OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
         );
-          /*void someFunction(){
-              var   user1 = 'user1'     ;
-      
-      
-                if ( myController.text == user1 ) {
-                    Navigator.pushReplacementNamed(
-              context,
-              "/splash");
-              } 
-          }*/
+          
         final loginButon = Material(
           elevation: 5.0,
           borderRadius: BorderRadius.circular(30.0),
@@ -136,30 +110,3 @@ class Login extends StatefulWidget {
         );
       }
     }
-
-
-    
-/*class Login extends StatelessWidget{
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home:Scaffold(
-        body: Center(
-          child: Text('This is just a dummy Login page'),
-          ),
-          floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => MyApp()),
-            );
-          },
-        label: Text('Login'),
-        backgroundColor: Colors.blue,
-        icon: Icon(Icons.verified_user),
-        ),
-      ),
-    );
-  }
-} */

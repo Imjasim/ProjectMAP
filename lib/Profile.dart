@@ -17,14 +17,12 @@ class Profile extends StatelessWidget {
                   radius: 65,
                   backgroundImage: AssetImage('images/profile1.jpg'),
                 ),
-                Text(
-                  '',
-                  style: TextStyle(
-                    fontFamily: 'SourceSansPro',
-                    fontSize: 15,
-                    letterSpacing: 2.0,                   
-                  ),
+                SizedBox(
+                  height: 13.0,
+                  width: 200,
                 ),
+
+
                 Text(
                   'STUDENT',
                   style: TextStyle(
@@ -43,91 +41,13 @@ class Profile extends StatelessWidget {
                     color: Colors.teal[100],
                   ),
                 ),
-                
-                Card(
-                  color: Colors.white,
-                  margin:
-                      EdgeInsets.symmetric(vertical: 5.0, horizontal: 50.0),
-                  child: ListTile(
-                    leading: Icon(
-                      Icons.person,
-                      color: Colors.teal[900],
-                    ),
-                    title: Text(
-                      'NUR NABILA BINTI ZAKARIA',
-                      style: TextStyle(fontSize: 13.0, fontFamily: 'Neucha'),
-                    ),
-                  ),
-                ),
-
-                Card(
-                  color: Colors.white,
-                  margin:
-                      EdgeInsets.symmetric(vertical: 5.0, horizontal: 50.0),
-                  child: ListTile(
-                    leading: Icon(
-                      Icons.keyboard,
-                      color: Colors.teal[900],
-                    ),
-                    title: Text(
-                      'A17CS0159',
-                      style: TextStyle(fontSize: 13.0, fontFamily: 'Neucha'),
-                    ),
-                  ),
-                ),
-
-                Card(
-                  color: Colors.white,
-                  margin:
-                      EdgeInsets.symmetric(vertical: 5.0, horizontal: 50.0),
-                  child: ListTile(
-                    leading: Icon(
-                      Icons.school,
-                      color: Colors.teal[900],
-                    ),
-                    title: Text(
-                      'School of Computing',
-                      style: TextStyle(fontSize: 13.0, fontFamily: 'Neucha'),
-                    ),
-                  ),
-                ),
-
-                Card(
-                  color: Colors.white,
-                  margin:
-                      EdgeInsets.symmetric(vertical: 5.0, horizontal: 50.0),
-                  child: ListTile(
-                    leading: Icon(
-                      Icons.email,
-                      color: Colors.teal[900],
-                    ),
-                    title: Text(
-                      'nabilazakaria13@gmail.com',
-                      style: TextStyle(fontSize: 13.0, fontFamily: 'Neucha'),
-                    ),
-                  ),
-                ),
-
-                Card(
-                    color: Colors.white,
-                    margin:
-                        EdgeInsets.symmetric(vertical: 5.0, horizontal: 50.0),
-                    child: ListTile(
-                      leading: Icon(
-                        Icons.phone,
-                        color: Colors.teal[900],
-                      ),
-                      title: Text(
-                        '+60123456789',
-                        style:
-                            TextStyle(fontFamily: 'BalooBhai', fontSize: 13.0),
-                      ),
-                    )
-                    ),
-
-                    ButtonTheme(
-                      minWidth: 2.0,
-                      child: RaisedButton(
+                _buildCard ('NUR NABILA BINTI ZAKARIA', Icons.person),
+                _buildCard ('A17CS0159', Icons.keyboard),
+                _buildCard ('School of Computing', Icons.school),
+                _buildCard ('nabilazakaria13@gmail.com', Icons.email),
+                _buildCard ('+60123456789', Icons.phone),
+              
+                 RaisedButton(
                       onPressed:() {
                         Navigator.pushReplacementNamed(context, "/Logout" );
                       },
@@ -144,7 +64,6 @@ class Profile extends StatelessWidget {
                     ),
                   ),
                 ),
-              ),
 
 
               ],
@@ -155,4 +74,22 @@ class Profile extends StatelessWidget {
       ),
     );
   }
+
+  Widget _buildCard (text, icon){
+    return Card(
+              color: Colors.white,
+                  margin:
+                      EdgeInsets.symmetric(vertical: 5.0, horizontal: 50.0),
+                  child: ListTile(
+                    leading: Icon(
+                      icon,
+                      color: Colors.teal[900],
+                    ),
+                    title: Text(
+                      text,
+                      style: TextStyle(fontSize: 13.0, fontFamily: 'Neucha'),
+                    ),
+                  ),
+                );
+      }
 }

@@ -42,13 +42,13 @@ class MyAppState extends State<MyApp> {
         backgroundColor: Colors.pink[900],
         ),
         body: Container (
-          color: Colors.blue[700],
+          color: Colors.pink[600],
           child: _pageOptions[_selectedPage],
         ),
 
         bottomNavigationBar: CurvedNavigationBar(
           index: 1,
-        backgroundColor: Colors.pink[300],
+        backgroundColor: Colors.pink[600],
         color: Colors.pink[900],
         buttonBackgroundColor: Colors.orange,
         items: <Widget>[

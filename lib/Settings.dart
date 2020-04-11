@@ -41,11 +41,11 @@ class SettingsPage extends State<Settings> {
                         borderRadius: BorderRadius.circular(10.0)),
                     child: Column(
                       children: <Widget>[
-                        _buildTile("Change Password", Icons.lock_outline,Icons.keyboard_arrow_right),
+                        _buildTile("Change Email", Icons.lock_outline,Icons.keyboard_arrow_right),
                         _buildDivider(),
                         _buildTile("Change Password", Icons.lock_outline,Icons.keyboard_arrow_right),
                         _buildDivider(),
-                        _buildTile("Change Password", Icons.lock_outline,Icons.keyboard_arrow_right),
+                        _buildTile("Privacy Settings", Icons.lock_outline,Icons.keyboard_arrow_right),
                         
                       ],
                     ),
