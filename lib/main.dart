@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-import 'Settings.dart';
-import 'Home.dart';
-import 'Profile.dart';
-import 'Login.dart';
-import 'Logout.dart';
+import 'screens/Settings.dart';
+import 'screens/Home.dart';
+import 'screens/Profile.dart';
+import 'screens/Login.dart';
+import 'screens/Logout.dart';
 
 
 void main() => runApp(MaterialApp(
