@@ -49,7 +49,7 @@ class Profile extends StatelessWidget {
               
                  RaisedButton(
                       onPressed:() {
-                        Navigator.pushReplacementNamed(context, "/Logout" );
+                        Navigator.pushReplacementNamed(context, "/Logout");
                       },
                   color: Colors.black,
                   elevation: 10.0,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_map/screens/Confession.dart';
 
 
 
@@ -13,18 +14,29 @@ class Home extends StatelessWidget {
           color: Colors.pink[600],
           child: Column(
           children: <Widget> [
-            _buildContent('Confession', 'Place to inform'),
-            _buildContent('Selling', 'Place to promote goods and foods'),
-            _buildContent('Event', 'Place to know what is happening around UTM'),
+            _ListTile('Confession', 'Place to inform'),
+            _ListTile('Selling', 'Place to promote goods and foods'),
+            _ListTile('Event', 'Place to know what is happening around UTM'),
             ]
           ),
         ),
       ),
     );
   }
+}
 
+class _ListTile extends StatefulWidget {
+  final String title;
+  final String desc; 
+  _ListTile(this.title, this.desc);
 
-  Widget _buildContent(title,desc) {
+  @override
+  __ListTileState createState() => __ListTileState();
+}
+
+class __ListTileState extends State<_ListTile> {
+  
+  Widget build(BuildContext context) {
       return Card(
         margin: EdgeInsets.only(left: 10,right: 10,top: 10),
     child: Column(
@@ -35,13 +47,20 @@ class Home extends StatelessWidget {
         child: ListTile(
 	
           leading: Icon(Icons.bookmark_border, size: 50),
-          title: Text(title),
-          subtitle: Text(desc),
+          title: Text(widget.title),
+          subtitle: Text(widget.desc),
+          onTap:() {
+                        Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => Confession(),
+                  ),
+            );
+                      },
         ),
         ),
       ],
     ),
   );
   }
-
 }
