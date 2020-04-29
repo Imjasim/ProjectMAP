@@ -1,7 +1,13 @@
 const String homeRoute = '/';
+const String mainPage = '/main';
 const String homepageRoute = '/Home';
 const String profileRoute = '/Profile';
 const String settingsRoute = '/Settings';
 const String loginRoute = '/Login';
 const String logoutRoute = '/Logout';
 const String splashRoute = '/splash';
+const String confessionRoute = '/confession';
+const String sellingRoute = '/selling';
+const String eventRoute = '/event';
+const String detailsRoute = '/detailsPage';
+const String confessionForm = '/confessionForm';

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart' ;
+import '../constants.dart';
 
 TextStyle style = TextStyle(fontFamily: 'Montserrat', fontSize: 20.0);
 class Login extends StatefulWidget {
@@ -53,7 +54,7 @@ class Login extends StatefulWidget {
             padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
             onPressed: () {
                 if ( myController.text == "u1" && myController2.text =="u2" ){
-                   Navigator.pushReplacementNamed(context,"/splash");
+                   Navigator.pushReplacementNamed(context,splashRoute);
                 } else {
                    // Navigator.pushReplacementNamed(context,"/Login");
                 }

@@ -3,19 +3,28 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'screens/Settings.dart';
 import 'screens/Home.dart';
 import 'screens/Profile.dart';
-import 'screens/Login.dart';
-import 'screens/Logout.dart';
+//import 'screens/Login.dart';
+//import 'screens/Logout.dart';
+import 'Router.dart';
+import 'constants.dart';
 
 
 void main() => runApp(MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Login(),
-      routes: {
+      //home: MyApp(),
+      //Login(),
+      initialRoute: //confessionForm,
+      //confessionRoute,
+      //mainPage,
+      loginRoute,
+      onGenerateRoute: createRoute,
+      /*routes: {
         "/main": (_) => MyApp(),
         "/splash": (_) => MYsplash(),
         "/Logout": (_) => Logout(),
         "/Login": (_) => Login(),
-      },
+        "/Confession": (_) => ConfessionScreen(),
+      },*/
 ));
 
 class MyApp extends StatefulWidget {
@@ -86,7 +95,7 @@ class _State extends State<MYsplash> {
     Future.delayed
     (Duration(seconds: 3),
     (){
-      Navigator.pushReplacementNamed(context, "/main" );
+      Navigator.pushReplacementNamed(context, mainPage );
     }
     );
   }

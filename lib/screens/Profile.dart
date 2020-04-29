@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import '../constants.dart';
 
 class Profile extends StatelessWidget {
   @override
@@ -49,7 +49,7 @@ class Profile extends StatelessWidget {
               
                  RaisedButton(
                       onPressed:() {
-                        Navigator.pushReplacementNamed(context, "/Logout");
+                        Navigator.pushNamed(context, logoutRoute);
                       },
                   color: Colors.black,
                   elevation: 10.0,

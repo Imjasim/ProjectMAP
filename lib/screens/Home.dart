@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:project_map/screens/Confession.dart';
+//import 'package:project_map/screens/Confession.dart';
+import '../constants.dart';
 
 
+class Home extends StatefulWidget {
+  @override
+  HomeState createState(){
+    return HomeState();
+  }
+}
 
-class Home extends StatelessWidget {
+class HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -14,53 +21,57 @@ class Home extends StatelessWidget {
           color: Colors.pink[600],
           child: Column(
           children: <Widget> [
-            _ListTile('Confession', 'Place to inform'),
-            _ListTile('Selling', 'Place to promote goods and foods'),
-            _ListTile('Event', 'Place to know what is happening around UTM'),
+            _listTile('Confession', 'Place to inform', confessionRoute),
+            _listTile('Selling', 'Place to promote goods and foods', sellingRoute),
+            _listTile('Event', 'Place to know what is happening around UTM', eventRoute),
             ]
           ),
         ),
       ),
     );
   }
+
+  Widget _listTile (title, desc, route) {
+    return Card(
+        margin: EdgeInsets.only(left: 10,right: 10,top: 10),
+    child: ListTile(
+	
+          leading: Icon(Icons.bookmark_border, size: 50),
+          title: Text(title),
+          subtitle: Text(desc),
+          onTap: () { Navigator.pushNamed(context, route);}
+        ),
+  );
+  }
 }
 
-class _ListTile extends StatefulWidget {
+
+
+/*class _ListTile extends StatefulWidget {
   final String title;
   final String desc; 
-  _ListTile(this.title, this.desc);
+  final String route;
+  _ListTile(this.title, this.desc, this.route);
 
   @override
   __ListTileState createState() => __ListTileState();
 }
 
 class __ListTileState extends State<_ListTile> {
+
+  @override
   
   Widget build(BuildContext context) {
       return Card(
         margin: EdgeInsets.only(left: 10,right: 10,top: 10),
-    child: Column(
-      mainAxisSize: MainAxisSize.min,
-      children: <Widget>[
-        InkWell (
-          onTap: () {},
-        child: ListTile(
+    child: ListTile(
 	
           leading: Icon(Icons.bookmark_border, size: 50),
           title: Text(widget.title),
           subtitle: Text(widget.desc),
-          onTap:() {
-                        Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => Confession(),
-                  ),
-            );
-                      },
+          onTap: () { Navigator.pushNamed(context, logoutRoute);
+        }
         ),
-        ),
-      ],
-    ),
   );
   }
-}
+}*/

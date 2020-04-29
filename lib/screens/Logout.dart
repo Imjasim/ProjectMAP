@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../constants.dart';
 
 
 class Logout extends StatefulWidget {
@@ -39,7 +40,7 @@ class _MyHomePageState extends State<Logout> {
                               FlatButton(
                                   child: Text("Close"),
                                   onPressed: (){
-                                  Navigator.pushReplacementNamed(context,"/Login");
+                                  Navigator.pushReplacementNamed(context,loginRoute);
                                })
                              ],
                           );
@@ -50,7 +51,7 @@ class _MyHomePageState extends State<Logout> {
           const SizedBox(width: 20.0),            
             RaisedButton(child:Text("NO "), 
               onPressed: (){
-                  Navigator.pushReplacementNamed(context,"/main");
+                  Navigator.pushReplacementNamed(context,mainPage);
                   },
                  )
                 ],

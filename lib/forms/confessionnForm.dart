@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(_ConfessionForm());
 
-class _ConfessionForm extends StatelessWidget {
+class NewConfessionForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final appTitle = 'Confession Form ';
@@ -51,7 +50,7 @@ class ConfessionFormState extends State<ConfessionForm>{
             Padding(
             padding: const 
             EdgeInsets.symmetric(vertical: 16.0),
-            child:Column(
+            child:Row(
                crossAxisAlignment:
       CrossAxisAlignment.start,
       children: <Widget>[
