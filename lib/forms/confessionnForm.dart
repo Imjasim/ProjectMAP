@@ -24,6 +24,8 @@ class ConfessionForm extends StatefulWidget {
   ConfessionFormState createState() {
     return ConfessionFormState();
   }
+
+  getPosts() {}
 }
 
 class ConfessionFormState extends State<ConfessionForm>{
