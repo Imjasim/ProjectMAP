@@ -1,32 +1,17 @@
-import 'package:flutter/material.dart';
-
-
-
-
-
-void main() => runApp(MyApp());
-class MyApp extends StatelessWidget {
-      
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Retrieve Text Input',
-      home: MyCustomForm(),
-    );
-  }
-}
+import 'package:flutter/material.dart' ;
+import '../constants.dart';
 
 TextStyle style = TextStyle(fontFamily: 'Montserrat', fontSize: 20.0);
-class MyCustomForm extends StatefulWidget {
+class Login extends StatefulWidget {
   @override
   _MyCustomFormState createState() => _MyCustomFormState();
 }
    
-    class  _MyCustomFormState extends State<MyCustomForm> {
+    class  _MyCustomFormState extends State<Login> {
     
     final myController =TextEditingController() ; 
     final myController2 =TextEditingController();
+    
     @override
     void dispose () {
       myController.dispose() ;
@@ -59,16 +44,7 @@ class MyCustomForm extends StatefulWidget {
               border:
                   OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
         );
-          /*void someFunction(){
-              var   user1 = 'user1'     ;
-      
-      
-                if ( myController.text == user1 ) {
-                    Navigator.pushReplacementNamed(
-              context,
-              "/splash");
-              } 
-          }*/
+          
         final loginButon = Material(
           elevation: 5.0,
           borderRadius: BorderRadius.circular(30.0),
@@ -78,13 +54,9 @@ class MyCustomForm extends StatefulWidget {
             padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
             onPressed: () {
                 if ( myController.text == "u1" && myController2.text =="u2" ){
-                   Navigator.pushReplacementNamed(
-              context,
-              "/splash");
+                   Navigator.pushReplacementNamed(context,splashRoute);
                 } else {
-                    Navigator.pushReplacementNamed(
-              context,
-              "/Login");
+                   // Navigator.pushReplacementNamed(context,"/Login");
                 }
           
             
@@ -103,29 +75,32 @@ class MyCustomForm extends StatefulWidget {
               color: Colors.grey[100],
               child: Padding(
                 padding: const EdgeInsets.all(36.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    SizedBox(
-                      height: 155.0,
-                      child: Image.asset(
-                        "assets/logo.png",
-                        fit: BoxFit.contain,
+                child: SingleChildScrollView(
+                                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      
+                      Container(
+                        height: 155.0,
+                        child: Image.asset(
+                          "assets/logo.png",
+                          fit: BoxFit.contain,
+                        ),
                       ),
-                    ),
-                    SizedBox(height: 45.0),
-                    emailField,
-                    SizedBox(height: 25.0),
-                    passwordField,
-                    SizedBox(
-                      height: 35.0,
-                    ),
-                    loginButon,
-                    SizedBox(
-                      height: 15.0,
-                    ),
-                  ],
+                      Container(height: 45.0),
+                      emailField,
+                      Container(height: 25.0),
+                      passwordField,
+                      Container(
+                        height: 35.0,
+                      ),
+                      loginButon,
+                      Container(
+                        height: 15.0,
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -133,6 +108,7 @@ class MyCustomForm extends StatefulWidget {
         );
       }
     }
+<<<<<<< HEAD:lib/Login.dart
 
 
     
@@ -166,3 +142,5 @@ class MyCustomForm extends StatefulWidget {
 
 
 >>>>>>> b9e3c2850276ed3109670885c474238ec83ebfcf
+=======
+>>>>>>> 445ea47ef87eafe771b8d1dee86cb33a34c934af:lib/screens/Login.dart

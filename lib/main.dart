@@ -1,24 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-import 'Settings.dart';
-import 'Home.dart';
-import 'Profile.dart';
-import 'Login.dart';
-import 'Logout.dart';
+import 'screens/Settings.dart';
+import 'screens/Home.dart';
+import 'screens/Profile.dart';
+//import 'screens/Login.dart';
+//import 'screens/Logout.dart';
+import 'Router.dart';
+import 'constants.dart';
 
 
 void main() => runApp(MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: MyCustomForm(),
-      routes: {
+      //home: MyApp(),
+      //Login(),
+      initialRoute: //confessionForm,
+      //confessionRoute,
+      //mainPage,
+      loginRoute,
+      onGenerateRoute: createRoute,
+      /*routes: {
         "/main": (_) => MyApp(),
         "/splash": (_) => MYsplash(),
         "/Logout": (_) => Logout(),
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
         "/MyCustomForm": (_) => MyCustomForm(),
 >>>>>>> b9e3c2850276ed3109670885c474238ec83ebfcf
       },
+=======
+        "/Login": (_) => Login(),
+        "/Confession": (_) => ConfessionScreen(),
+      },*/
+>>>>>>> 445ea47ef87eafe771b8d1dee86cb33a34c934af
 ));
 
 class MyApp extends StatefulWidget {
@@ -45,13 +59,13 @@ class MyAppState extends State<MyApp> {
         backgroundColor: Colors.pink[900],
         ),
         body: Container (
-          color: Colors.blue[700],
+          color: Colors.pink[600],
           child: _pageOptions[_selectedPage],
         ),
 
         bottomNavigationBar: CurvedNavigationBar(
           index: 1,
-        backgroundColor: Colors.pink[300],
+        backgroundColor: Colors.pink[600],
         color: Colors.pink[900],
         buttonBackgroundColor: Colors.orange,
         items: <Widget>[
@@ -73,6 +87,8 @@ class MyAppState extends State<MyApp> {
   }
 }
 
+
+
 class MYsplash extends StatefulWidget {
   @override
   _State createState() => _State();
@@ -87,7 +103,7 @@ class _State extends State<MYsplash> {
     Future.delayed
     (Duration(seconds: 3),
     (){
-      Navigator.pushReplacementNamed(context, "/main" );
+      Navigator.pushReplacementNamed(context, mainPage );
     }
     );
   }
