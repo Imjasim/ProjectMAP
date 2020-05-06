@@ -14,6 +14,10 @@ void main() => runApp(MaterialApp(
         "/main": (_) => MyApp(),
         "/splash": (_) => MYsplash(),
         "/Logout": (_) => Logout(),
+<<<<<<< HEAD
+=======
+        "/MyCustomForm": (_) => MyCustomForm(),
+>>>>>>> b9e3c2850276ed3109670885c474238ec83ebfcf
       },
 ));
 
