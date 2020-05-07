@@ -22,9 +22,17 @@ void main() => runApp(MaterialApp(
         "/main": (_) => MyApp(),
         "/splash": (_) => MYsplash(),
         "/Logout": (_) => Logout(),
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+        "/MyCustomForm": (_) => MyCustomForm(),
+>>>>>>> b9e3c2850276ed3109670885c474238ec83ebfcf
+      },
+=======
         "/Login": (_) => Login(),
         "/Confession": (_) => ConfessionScreen(),
       },*/
+>>>>>>> 445ea47ef87eafe771b8d1dee86cb33a34c934af
 ));
 
 class MyApp extends StatefulWidget {
