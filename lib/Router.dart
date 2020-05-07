@@ -8,6 +8,8 @@ import 'package:project_map/screens/Settings.dart';
 import 'package:project_map/screens/Login.dart';
 import 'package:project_map/screens/Logout.dart';
 import 'forms/confessionnForm.dart';
+import 'package:project_map/screens/EventScreen.dart';
+import 'forms/EventForm.dart';
 
 import 'constants.dart';
 
@@ -61,7 +63,7 @@ Route<dynamic> createRoute(settings) {
 
       case eventRoute:
       return MaterialPageRoute(
-        builder: (context) => Logout(),
+        builder: (context) => EventScreen(events_data),
       );
 
       case confessionForm:
