@@ -108,7 +108,7 @@ class Login extends StatefulWidget {
         );
       }
     }
-<<<<<<< HEAD:lib/Login.dart
+//<<<<<<< HEAD:lib/Login.dart
 
 
     

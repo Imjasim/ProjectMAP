@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:project_map/model/mock_data.dart';
+import 'package:project_map/model/confession_class.dart';
 
 
 class NewConfessionForm extends StatelessWidget {
@@ -6,14 +8,11 @@ class NewConfessionForm extends StatelessWidget {
   Widget build(BuildContext context) {
     final appTitle = 'Confession Form ';
 
-    return MaterialApp(
-      title: appTitle,
-      home: Scaffold(
+    return Scaffold(
         appBar: AppBar(
           title: Text(appTitle),
         ),
         body: ConfessionForm(),
-      ),
     );
   }
 }
@@ -29,6 +28,8 @@ class ConfessionForm extends StatefulWidget {
 }
 
 class ConfessionFormState extends State<ConfessionForm>{
+  final newText =TextEditingController() ; 
+  Confession newConfession;
 
   final _formKey =GlobalKey <FormState>() ; 
   @override
@@ -41,6 +42,7 @@ class ConfessionFormState extends State<ConfessionForm>{
       children: <Widget>[
 
         TextFormField(
+          controller: newText,
           validator: (value){
             if (value.isEmpty){
               return "Please enter your confession" ;
@@ -65,6 +67,9 @@ class ConfessionFormState extends State<ConfessionForm>{
                   // If the form is valid, display a Snackbar.
                   Scaffold.of(context)
                       .showSnackBar(SnackBar(content: Text('Confession Posted ')));
+                      newConfession = new Confession('Jasim', newText.text, 'Testing');
+                  confessions_data.add(newConfession);
+                  Navigator.of(context).pop(confessions_data);
                 }
               },
               child: Text('Submit'),

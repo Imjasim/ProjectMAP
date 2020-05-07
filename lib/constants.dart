@@ -11,4 +11,4 @@ const String sellingRoute = '/selling';
 const String eventRoute = '/event';
 const String detailsRoute = '/detailsPage';
 const String confessionForm = '/confessionForm';
-const String EventForm = '/EventForm';
+const String eventForm = '/EventForm';

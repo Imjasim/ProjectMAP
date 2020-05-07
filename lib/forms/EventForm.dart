@@ -3,15 +3,15 @@ import 'package:flutter/material.dart';
 //import 'package:project_map/model/mock_data.dart';
 
 
-class FormScreen extends StatefulWidget{
+class EventForm extends StatefulWidget{
   @override
   State<StatefulWidget> createState()
   {
-    return FormScreenState();
+    return EventFormState();
   }
 }
 
-class FormScreenState extends State<FormScreen>{
+class EventFormState extends State<EventForm>{
 
   //String picture;
   String title;

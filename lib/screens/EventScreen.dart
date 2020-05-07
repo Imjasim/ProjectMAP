@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:project_map/model/Event_class.dart';
+import 'package:project_map/model/event_class.dart';
 import '../constants.dart';
 
 
@@ -34,7 +34,7 @@ class EventScreen extends StatelessWidget {
               label: const Text(''),
               icon: const Icon(Icons.add_circle),
               heroTag: null,
-              onPressed: () => Navigator.pushNamed(context, EventForm),
+              onPressed: () => Navigator.pushNamed(context, eventForm),
             ),
     );
   }
@@ -71,7 +71,7 @@ class __ListTileState extends State<_ListTile> {
         child: ListTile(
 	
           leading: Icon(Icons.leak_remove, size: 50),
-          title: Text(widget.confessions[widget.index].title),
+          title: Text(widget.confessions[widget.index].eventName),
           subtitle: Text(widget.confessions[widget.index].description),
           onTap: () => _navigate(),
         ),

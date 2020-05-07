@@ -1,4 +1,4 @@
-class git  {
+class Event  {
   String eventName;
   String venue ;
   String time ;

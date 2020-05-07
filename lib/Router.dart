@@ -70,6 +70,11 @@ Route<dynamic> createRoute(settings) {
       return MaterialPageRoute(
         builder: (context) => NewConfessionForm(),
       );
+
+      case eventForm:
+      return MaterialPageRoute(
+        builder: (context) => EventForm(),
+      );
   }
   return null;
 }
