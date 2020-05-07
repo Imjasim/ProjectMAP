@@ -20,12 +20,21 @@ class ConfessionScreenState extends State<ConfessionScreen> {
 
   ConfessionScreenState(this._data);
 
-  void _navigate() async {
+  void _navigateAdd() async {
     final returnData = await Navigator.pushNamed(
       context,confessionForm);
 
     if (returnData != null) {
       setState(() => _data = returnData);
+    }
+  }
+
+  void _navigateEdit(List confessions,int index) async {
+    final returnData = await Navigator.pushNamed(context, detailsRoute, 
+          arguments: Confession.copy(confessions[index]));
+
+    if (returnData != null) {
+      setState(() => confessions[index] = returnData);
     }
   }
 
@@ -54,7 +63,7 @@ class ConfessionScreenState extends State<ConfessionScreen> {
               label: const Text(''),
               icon: const Icon(Icons.add_circle),
               heroTag: null,
-              onPressed: () => _navigate(),
+              onPressed: () => _navigateAdd(),
             ),
     );
   }
@@ -67,8 +76,7 @@ class ConfessionScreenState extends State<ConfessionScreen> {
           leading: Icon(Icons.bookmark_border, size: 50),
           title: Text(confessions[index].username),
           subtitle: Text(confessions[index].subject),
-          onTap: () { Navigator.pushNamed(context, detailsRoute, 
-          arguments: Confession.copy(confessions[index]));}
+          onTap: () => _navigateEdit(confessions, index),
         ),
   );
   }
