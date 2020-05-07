@@ -67,7 +67,8 @@ class ConfessionScreenState extends State<ConfessionScreen> {
           leading: Icon(Icons.bookmark_border, size: 50),
           title: Text(confessions[index].username),
           subtitle: Text(confessions[index].subject),
-          onTap: () { Navigator.pushNamed(context, logoutRoute);}
+          onTap: () { Navigator.pushNamed(context, detailsRoute, 
+          arguments: Confession.copy(confessions[index]));}
         ),
   );
   }

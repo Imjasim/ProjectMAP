@@ -7,6 +7,7 @@ import 'package:project_map/screens/Profile.dart';
 import 'package:project_map/screens/Settings.dart';
 import 'package:project_map/screens/Login.dart';
 import 'package:project_map/screens/Logout.dart';
+import 'package:project_map/screens/DetailScreen.dart';
 import 'forms/confessionnForm.dart';
 import 'package:project_map/screens/EventScreen.dart';
 import 'forms/EventForm.dart';
@@ -74,6 +75,11 @@ Route<dynamic> createRoute(settings) {
       case eventForm:
       return MaterialPageRoute(
         builder: (context) => EventForm(),
+      );
+
+      case detailsRoute:
+      return MaterialPageRoute(
+        builder: (context) => DetailScreen(settings.arguments)
       );
   }
   return null;

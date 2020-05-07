@@ -12,3 +12,14 @@ const String eventRoute = '/event';
 const String detailsRoute = '/detailsPage';
 const String confessionForm = '/confessionForm';
 const String eventForm = '/EventForm';
+
+
+class DotMenu {
+  static const String edit = 'Edit'; 
+  static const String delete = 'Delete'; 
+  
+  static const List<String> eventsMenu = <String> [
+    edit, delete
+  ];
+}
+
