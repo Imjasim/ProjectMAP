@@ -30,11 +30,16 @@ class ConfessionScreenState extends State<ConfessionScreen> {
   }
 
   void _navigateEdit(List confessions,int index) async {
-    final returnData = await Navigator.pushNamed(context, detailsRoute, 
+    final returnData = await Navigator.pushNamed(context, confessionDetailsRoute, 
           arguments: Confession.copy(confessions[index]));
 
     if (returnData != null) {
+      if (returnData ==1){
+        setState(() => confessions.removeAt(index));
+      }
+      else{
       setState(() => confessions[index] = returnData);
+      }
     }
   }
 

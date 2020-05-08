@@ -1,26 +1,61 @@
 import 'package:flutter/material.dart';
-import 'package:project_map/model/http_service.dart';
-import 'package:project_map/model/posts_model.dart';
+import 'package:project_map/model/confession_class.dart';
+import '../constants.dart';
 
-class PostDetail extends StatelessWidget {
-  final Post post;
-  final HttpService httpService = HttpService();
-  PostDetail({@required this.post});
+class ConfessionDetailScreen extends StatefulWidget {
+  final Confession _data;
+
+  ConfessionDetailScreen(this._data);
+
+  
+
+  @override
+  ConfessionDetailScreenState createState(){
+    return ConfessionDetailScreenState();
+  }
+}
+
+class ConfessionDetailScreenState extends State<ConfessionDetailScreen> {
+  final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text(post.title),
+          leading: new IconButton(
+          icon: new Icon(Icons.arrow_back),
+          onPressed: (){Navigator.pop(context,widget._data);}
         ),
-        floatingActionButton: FloatingActionButton(
-            child: Icon(Icons.delete),
-            onPressed: () async {
-              await httpService.deletePost(post.username);
-              Navigator.of(context).pop();
+          centerTitle: true,
+          title: Text('One UTM'),
+        backgroundColor: Colors.pink[900],
+        actions: <Widget>[
+          PopupMenuButton<String>(
+            onSelected: choiceAction,
+            itemBuilder: (context) {
+            return DotMenu.confessionsMenu.map((String menu) {
+            return PopupMenuItem<String> (
+            value: menu,
+            child: Text(menu),
+          );
+            }).toList();
             },
           ),
-        body: SingleChildScrollView(
+        ],
+        ),
+      body: nonEditable() 
+    );
+  }
+
+  void choiceAction (String choice) {
+    if (choice == DotMenu.delete) {
+      Navigator.pop(context,1);
+    }
+  }
+
+  Widget nonEditable () {
+    return SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(12.0),
             child: Column(
@@ -46,8 +81,8 @@ class PostDetail extends StatelessWidget {
                               child: new Column(
                                 children: <Widget>[
                                   ListTile(
-                                    title: Text("Username"),
-                                    subtitle: Text("${post.username}"),
+                                    title: Text("Name"),
+                                    subtitle: Text("${widget._data.username}"),
                                   ),
                                 ],),
                                )
@@ -63,7 +98,7 @@ class PostDetail extends StatelessWidget {
                                 children: <Widget>[
                                   ListTile(
                                     title: Text("Subject"),
-                                    subtitle: Text("${post.subject}"),
+                                    subtitle: Text("${widget._data.subject}"),
                                   ),
                                 ],),
                                )
@@ -83,8 +118,8 @@ class PostDetail extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: <Widget>[
                                   ListTile(
-                                    title: Text("Username"),
-                                    subtitle: Text("${post.content}"),
+                                    title: Text("Content"),
+                                    subtitle: Text("${widget._data.content}"),
                                   ),
                                 ],),
                                )
@@ -97,19 +132,6 @@ class PostDetail extends StatelessWidget {
                ],
             ),
           ),
-        ));
+        );
   }
 }
-
-
-// ListTile(
- //                       title: Text("Username"),
- //                       subtitle: Text("${post.username}"),
- //                     ),
-  //                    ListTile(
-  //                      title: Text("Subject"),
-  //                      subtitle: Text(post.subject),
-   //                   ),
-   //                   ListTile(
-   //                     title: Text("Content"),
-    //                    subtitle: Text("${post.content}"),

@@ -2,12 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:project_map/main.dart';
 import 'package:project_map/model/mock_data.dart';
 import 'package:project_map/screens/ConfessionScreen.dart';
+import 'package:project_map/screens/SellingScreen.dart';
 import 'package:project_map/screens/Home.dart';
 import 'package:project_map/screens/Profile.dart';
 import 'package:project_map/screens/Settings.dart';
 import 'package:project_map/screens/Login.dart';
 import 'package:project_map/screens/Logout.dart';
-import 'package:project_map/screens/DetailScreen.dart';
+import 'package:project_map/screens/ConfessionDetailScreen.dart';
+import 'package:project_map/screens/SellingDetailScreen.dart';
+import 'package:project_map/screens/EventDetailScreen.dart';
+import 'screens/post_detail.dart';
 import 'forms/confessionnForm.dart';
 import 'package:project_map/screens/EventScreen.dart';
 import 'forms/EventForm.dart';
@@ -57,14 +61,19 @@ Route<dynamic> createRoute(settings) {
         builder: (context) => ConfessionScreen(confessions_data),
       );
 
-      case sellingRoute:
-      return MaterialPageRoute(
-        builder: (context) => Logout(),
-      );
-
       case eventRoute:
       return MaterialPageRoute(
         builder: (context) => EventScreen(events_data),
+      );
+
+      case sellingRoute:
+      return MaterialPageRoute(
+        builder: (context) => SellingScreen(sales_data),
+      );
+
+      case sellingRoute:
+      return MaterialPageRoute(
+        builder: (context) => Logout(),
       );
 
       case confessionForm:
@@ -77,9 +86,19 @@ Route<dynamic> createRoute(settings) {
         builder: (context) => EventForm(),
       );
 
-      case detailsRoute:
+      case confessionDetailsRoute:
       return MaterialPageRoute(
-        builder: (context) => DetailScreen(settings.arguments)
+        builder: (context) => ConfessionDetailScreen(settings.arguments)
+      );
+
+      case eventDetailsRoute:
+      return MaterialPageRoute(
+        builder: (context) => EventDetailScreen(settings.arguments)
+      );
+
+      case sellingDetailsRoute:
+      return MaterialPageRoute(
+        builder: (context) => SellingDetailScreen(settings.arguments)
       );
   }
   return null;

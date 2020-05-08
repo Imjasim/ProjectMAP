@@ -12,6 +12,7 @@ class NewConfessionForm extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           title: Text(appTitle),
+          backgroundColor: Colors.pink[900],
         ),
         body: ConfessionForm(),
     );
