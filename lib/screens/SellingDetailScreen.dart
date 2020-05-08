@@ -17,13 +17,12 @@ class SellingDetailScreen extends StatefulWidget {
 
 class SellingDetailScreenState extends State<SellingDetailScreen> {
   bool _isEditable = false;
-  final editText =TextEditingController() ;
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
 
-  void initState() {
-    editText.text=widget._data.prodName;
+  /*void initState() {
+    //editText.text=widget._data.prodName;
     return super.initState();
-  }
+  }*/
 
   @override
   Widget build(BuildContext context) {
@@ -52,6 +51,7 @@ class SellingDetailScreenState extends State<SellingDetailScreen> {
     );
   }
 
+//Choices for 3 dot menu
   void choiceAction (String choice) {
     if (choice == DotMenu.edit) {
       setState(() {
@@ -63,12 +63,15 @@ class SellingDetailScreenState extends State<SellingDetailScreen> {
     }
   }
 
-  Widget _buildtitle(){
+//Editable section for products
+  Widget _buildtitle(text,label){
+    final editText =TextEditingController() ;
+    editText.text=text;
       return TextFormField(
         controller: editText,
         keyboardType: TextInputType.multiline,
         maxLines: null,
-        decoration: InputDecoration(labelText: 'INFO'),
+        decoration: InputDecoration(labelText: label),
         validator: (String value){
         if(value.isEmpty){
         return 'Selling INFO is required';
@@ -83,7 +86,6 @@ class SellingDetailScreenState extends State<SellingDetailScreen> {
 
   Widget editable() {
     return Scaffold(
-        appBar: AppBar(title : Text("EditForm")),
       body:Container(
         margin : EdgeInsets.all(24),
         child : Form(
@@ -91,7 +93,9 @@ class SellingDetailScreenState extends State<SellingDetailScreen> {
           child: Column(
           children: <Widget>[
            // _buildpicture(),
-            _buildtitle(),
+            _buildtitle(widget._data.prodName, 'Product Name'),
+            _buildtitle(widget._data.prodPrice, 'Product Price'),
+            _buildtitle(widget._data.prodDesc, 'Product Description'),
            // _builddescription(),
             SizedBox(height:100),
                RaisedButton.icon(
@@ -106,10 +110,11 @@ class SellingDetailScreenState extends State<SellingDetailScreen> {
                  color: Colors.amber,
               ),
               RaisedButton.icon(
-                 onPressed: () 
-                 {
-
-                 },
+                 onPressed: () { 
+                   setState(() {
+                  _isEditable = false;
+                  });
+                },
                  icon : Icon(
                    Icons.close
                  ),
@@ -123,6 +128,8 @@ class SellingDetailScreenState extends State<SellingDetailScreen> {
     );
       //Implement two buttons to save and cancel the changes made to the content of the confession
   }
+
+  //Noneditable section for products
   Widget nonEditable () {
     return SingleChildScrollView(
           child: Padding(

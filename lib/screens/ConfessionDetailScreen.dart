@@ -63,12 +63,14 @@ class ConfessionDetailScreenState extends State<ConfessionDetailScreen> {
     }
   }
 
-  Widget _buildtitle(){
+  TextFormField _buildtitle(text, label){
+    final editText =TextEditingController() ;
+    editText.text=text;
       return TextFormField(
         controller: editText,
         keyboardType: TextInputType.multiline,
         maxLines: null,
-        decoration: InputDecoration(labelText: 'Confession'),
+        decoration: InputDecoration(labelText: label),
         validator: (String value){
         if(value.isEmpty){
         return 'Confession is required';
@@ -83,7 +85,6 @@ class ConfessionDetailScreenState extends State<ConfessionDetailScreen> {
 
   Widget editable() {
     return Scaffold(
-        appBar: AppBar(title : Text("EditForm")),
       body:Container(
         margin : EdgeInsets.all(24),
         child : Form(
@@ -91,13 +92,13 @@ class ConfessionDetailScreenState extends State<ConfessionDetailScreen> {
           child: Column(
           children: <Widget>[
            // _buildpicture(),
-            _buildtitle(),
+            _buildtitle(widget._data.content, 'Content'),
            // _builddescription(),
             SizedBox(height:100),
                RaisedButton.icon(
                  onPressed: () 
                  {
-
+                  
                  },
                  icon : Icon(
                    Icons.check
@@ -108,7 +109,9 @@ class ConfessionDetailScreenState extends State<ConfessionDetailScreen> {
               RaisedButton.icon(
                  onPressed: () 
                  {
-
+                   setState(() {
+                  _isEditable = false;
+                  });
                  },
                  icon : Icon(
                    Icons.close

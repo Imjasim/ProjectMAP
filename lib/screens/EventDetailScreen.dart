@@ -17,13 +17,7 @@ class EventDetailScreen extends StatefulWidget {
 
 class EventDetailScreenState extends State<EventDetailScreen> {
   bool _isEditable = false;
-  final editText =TextEditingController() ;
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
-
-  void initState() {
-    editText.text=widget._data.description;
-    return super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -63,12 +57,14 @@ class EventDetailScreenState extends State<EventDetailScreen> {
     }
   }
 
-  Widget _buildtitle(){
+  Widget _buildtitle(text, label){
+    final editText =TextEditingController() ;
+    editText.text=text;
       return TextFormField(
         controller: editText,
         keyboardType: TextInputType.multiline,
         maxLines: null,
-        decoration: InputDecoration(labelText: 'INFO'),
+        decoration: InputDecoration(labelText: label),
         validator: (String value){
         if(value.isEmpty){
         return 'Event INFO is required';
@@ -83,7 +79,7 @@ class EventDetailScreenState extends State<EventDetailScreen> {
 
   Widget editable() {
     return Scaffold(
-        appBar: AppBar(title : Text("EditForm")),
+        //appBar: AppBar(title : Text("EditForm")),
       body:Container(
         margin : EdgeInsets.all(24),
         child : Form(
@@ -91,13 +87,16 @@ class EventDetailScreenState extends State<EventDetailScreen> {
           child: Column(
           children: <Widget>[
            // _buildpicture(),
-            _buildtitle(),
+            _buildtitle(widget._data.eventName, 'Name'),
+            _buildtitle(widget._data.venue, 'Venue'),
+            _buildtitle(widget._data.time, 'Time'),
+            _buildtitle(widget._data.description, 'Description'),
            // _builddescription(),
             SizedBox(height:100),
                RaisedButton.icon(
                  onPressed: () 
                  {
-
+                   
                  },
                  icon : Icon(
                    Icons.check
@@ -108,7 +107,9 @@ class EventDetailScreenState extends State<EventDetailScreen> {
               RaisedButton.icon(
                  onPressed: () 
                  {
-
+                  setState(() {
+                  _isEditable = false;
+                  });
                  },
                  icon : Icon(
                    Icons.close
