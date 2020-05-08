@@ -90,9 +90,11 @@ class PostDetail extends StatelessWidget {
                                )
                                ),
                     ],
-                  ),
+                  ), 
+                 ],
                 ),
-              ],
+                ),
+               ],
             ),
           ),
         ));
