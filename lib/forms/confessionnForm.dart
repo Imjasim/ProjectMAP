@@ -7,6 +7,7 @@ class NewConfessionForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final appTitle = 'Confession Form ';
+   
 
     return Scaffold(
         appBar: AppBar(
