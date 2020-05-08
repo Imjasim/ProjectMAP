@@ -68,10 +68,10 @@ class SellingDetailScreenState extends State<SellingDetailScreen> {
         controller: editText,
         keyboardType: TextInputType.multiline,
         maxLines: null,
-        decoration: InputDecoration(labelText: 'Title'),
+        decoration: InputDecoration(labelText: 'INFO'),
         validator: (String value){
         if(value.isEmpty){
-        return 'Information is required';
+        return 'Selling INFO is required';
         }
         },
         onSaved: (String value)
