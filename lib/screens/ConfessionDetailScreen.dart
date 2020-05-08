@@ -18,6 +18,7 @@ class ConfessionDetailScreen extends StatefulWidget {
 class ConfessionDetailScreenState extends State<ConfessionDetailScreen> {
   bool _isEditable = false;
   final editText =TextEditingController() ;
+  final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
 
   void initState() {
     editText.text=widget._data.content;
@@ -62,11 +63,63 @@ class ConfessionDetailScreenState extends State<ConfessionDetailScreen> {
     }
   }
 
+  Widget _buildtitle(){
+      return TextFormField(
+        controller: editText,
+        decoration: InputDecoration(labelText: 'Title'),
+        validator: (String value){
+        if(value.isEmpty){
+        return 'Title is required';
+        }
+        },
+        onSaved: (String value)
+        {
+          //title = value;
+        },
+        );
+  }
+
   Widget editable() {
-    return TextField (
-          controller: editText
+    return Scaffold(
+        appBar: AppBar(title : Text("EditForm")),
+      body:Container(
+        margin : EdgeInsets.all(24),
+        child : Form(
+          key: _formkey,
+          child: Column(
+          children: <Widget>[
+           // _buildpicture(),
+            _buildtitle(),
+           // _builddescription(),
+            SizedBox(height:100),
+               RaisedButton.icon(
+                 onPressed: () 
+                 {
+
+                 },
+                 icon : Icon(
+                   Icons.check
+                 ),
+                 label: Text("Save"),
+                 color: Colors.amber,
+              ),
+              RaisedButton.icon(
+                 onPressed: () 
+                 {
+
+                 },
+                 icon : Icon(
+                   Icons.close
+                 ),
+                 label: Text("Cancel"),
+                 color: Colors.amber,
+              ),
+          ],
+          ),
+        ),
+      ),
     );
-    //Implement two buttons to save and cancel the changes made to the content of the confession
+      //Implement two buttons to save and cancel the changes made to the content of the confession
   }
 
   Widget nonEditable () {
