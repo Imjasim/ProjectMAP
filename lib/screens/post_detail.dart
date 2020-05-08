@@ -29,18 +29,65 @@ class PostDetail extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
-                      ListTile(
-                        title: Text("Username"),
-                        subtitle: Text("${post.username}"),
-                      ),
-                      ListTile(
-                        title: Text("Subject"),
-                        subtitle: Text(post.subject),
-                      ),
-                      ListTile(
-                        title: Text("Content"),
-                        subtitle: Text("${post.content}"),
-                      ),
+                     Row( 
+                        children: <Widget>[
+                          new Text("Details",style: new TextStyle(fontSize:30.0,),textAlign: TextAlign.left,),
+                        ],
+                        ),  
+                         Row( 
+                        children: <Widget>[
+                          new Expanded(
+                            child: new Container(
+                              height: 100.0,
+                              decoration: new BoxDecoration(
+                                borderRadius: new BorderRadius.circular(5.0),
+                                color: Color(0xEE03A2)
+                              ),
+                              child: new Column(
+                                children: <Widget>[
+                                  ListTile(
+                                    title: Text("Username"),
+                                    subtitle: Text("${post.username}"),
+                                  ),
+                                ],),
+                               )
+                               ),
+                           new Expanded(
+                             child: new Container(
+                              height: 100.0,
+                              decoration: new BoxDecoration(
+                                borderRadius: new BorderRadius.circular(5.0),
+                                color: Color(0xEE03A2)
+                              ),
+                              child: new Column(
+                                children: <Widget>[
+                                  ListTile(
+                                    title: Text("Subject"),
+                                    subtitle: Text("${post.subject}"),
+                                  ),
+                                ],),
+                               )
+                               ),
+                        ],
+                        ), 
+                          Row( 
+                        children: <Widget>[
+                          new Expanded(
+                            child: new Container(
+                              height: 100.0,
+                              decoration: new BoxDecoration(
+                                borderRadius: new BorderRadius.circular(5.0),
+                                color: Color(0x03EEEE)
+                              ),
+                              child: new Column(
+                                children: <Widget>[
+                                  ListTile(
+                                    title: Text("Username"),
+                                    subtitle: Text("${post.content}"),
+                                  ),
+                                ],),
+                               )
+                               ),
                     ],
                   ),
                 ),
@@ -50,3 +97,16 @@ class PostDetail extends StatelessWidget {
         ));
   }
 }
+
+
+// ListTile(
+ //                       title: Text("Username"),
+ //                       subtitle: Text("${post.username}"),
+ //                     ),
+  //                    ListTile(
+  //                      title: Text("Subject"),
+  //                      subtitle: Text(post.subject),
+   //                   ),
+   //                   ListTile(
+   //                     title: Text("Content"),
+    //                    subtitle: Text("${post.content}"),
