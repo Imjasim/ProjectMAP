@@ -23,5 +23,9 @@ class DotMenu {
   static const List<String> eventsMenu = <String> [
     edit, delete
   ];
+
+  static const List<String> confessionsMenu = <String> [
+    delete
+  ];
 }
 

@@ -28,6 +28,10 @@ class SellingDetailScreenState extends State<SellingDetailScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          leading: new IconButton(
+          icon: new Icon(Icons.arrow_back),
+          onPressed: (){Navigator.pop(context,widget._data);}
+        ),
           centerTitle: true,
           title: Text('One UTM'),
         backgroundColor: Colors.pink[900],
@@ -35,10 +39,10 @@ class SellingDetailScreenState extends State<SellingDetailScreen> {
           PopupMenuButton<String>(
             onSelected: choiceAction,
             itemBuilder: (context) {
-            return DotMenu.eventsMenu.map((String eventMenu) {
+            return DotMenu.eventsMenu.map((String menu) {
             return PopupMenuItem<String> (
-            value: eventMenu,
-            child: Text(eventMenu),
+            value: menu,
+            child: Text(menu),
           );
             }).toList();
             },
@@ -64,14 +68,21 @@ class SellingDetailScreenState extends State<SellingDetailScreen> {
   }
 
 //Editable section for products
-  Widget _buildtitle(text,label){
-    final editText =TextEditingController() ;
-    editText.text=text;
-      return TextFormField(
-        controller: editText,
+  Widget _buildtitle(){
+    final editText1 =TextEditingController() ;
+    final editText2 =TextEditingController() ;
+    final editText3 =TextEditingController() ;
+    editText1.text=widget._data.prodName;
+    editText2.text=widget._data.prodPrice;
+    editText3.text=widget._data.prodDesc;
+
+      return Column(
+        children: <Widget>[ 
+          TextFormField(
+        controller: editText1,
         keyboardType: TextInputType.multiline,
         maxLines: null,
-        decoration: InputDecoration(labelText: label),
+        decoration: InputDecoration(labelText: 'Product Name'),
         validator: (String value){
         if(value.isEmpty){
         return 'Selling INFO is required';
@@ -79,11 +90,44 @@ class SellingDetailScreenState extends State<SellingDetailScreen> {
         },
         onSaved: (String value)
         {
-          //title = value;
+          widget._data.prodName = value;
         },
+        ),
+        TextFormField(
+        controller: editText2,
+        keyboardType: TextInputType.multiline,
+        maxLines: null,
+        decoration: InputDecoration(labelText: 'Product Price'),
+        validator: (String value){
+        if(value.isEmpty){
+        return 'Selling INFO is required';
+        }
+        },
+        onSaved: (String value)
+        {
+          widget._data.prodPrice = value;
+        },
+        ),
+        TextFormField(
+        controller: editText3,
+        keyboardType: TextInputType.multiline,
+        maxLines: null,
+        decoration: InputDecoration(labelText: 'Product Description'),
+        validator: (String value){
+        if(value.isEmpty){
+        return 'Selling INFO is required';
+        }
+        },
+        onSaved: (String value)
+        {
+          widget._data.prodDesc = value;
+        },
+        ),
+        ],
         );
   }
 
+ //Implement two buttons to save and cancel the changes made to the content of the confession
   Widget editable() {
     return Scaffold(
       body:Container(
@@ -92,16 +136,21 @@ class SellingDetailScreenState extends State<SellingDetailScreen> {
           key: _formkey,
           child: Column(
           children: <Widget>[
+            _buildtitle(),
            // _buildpicture(),
-            _buildtitle(widget._data.prodName, 'Product Name'),
+            /*_buildtitle(widget._data.prodName, 'Product Name'),
             _buildtitle(widget._data.prodPrice, 'Product Price'),
-            _buildtitle(widget._data.prodDesc, 'Product Description'),
+            _buildtitle(widget._data.prodDesc, 'Product Description'),*/
            // _builddescription(),
             SizedBox(height:100),
                RaisedButton.icon(
                  onPressed: () 
                  {
-
+                   if (_formkey.currentState.validate()) {
+                  _formkey.currentState.save(); }
+                  setState(() {
+                    _isEditable = false;
+                  });
                  },
                  icon : Icon(
                    Icons.check
@@ -126,7 +175,6 @@ class SellingDetailScreenState extends State<SellingDetailScreen> {
         ),
       ),
     );
-      //Implement two buttons to save and cancel the changes made to the content of the confession
   }
 
   //Noneditable section for products

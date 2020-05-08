@@ -23,6 +23,10 @@ class EventDetailScreenState extends State<EventDetailScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          leading: new IconButton(
+          icon: new Icon(Icons.arrow_back),
+          onPressed: (){Navigator.pop(context,widget._data);}
+        ),
           centerTitle: true,
           title: Text('One UTM'),
         backgroundColor: Colors.pink[900],
@@ -30,10 +34,10 @@ class EventDetailScreenState extends State<EventDetailScreen> {
           PopupMenuButton<String>(
             onSelected: choiceAction,
             itemBuilder: (context) {
-            return DotMenu.eventsMenu.map((String eventMenu) {
+            return DotMenu.eventsMenu.map((String menu) {
             return PopupMenuItem<String> (
-            value: eventMenu,
-            child: Text(eventMenu),
+            value: menu,
+            child: Text(menu),
           );
             }).toList();
             },
@@ -57,14 +61,23 @@ class EventDetailScreenState extends State<EventDetailScreen> {
     }
   }
 
-  Widget _buildtitle(text, label){
-    final editText =TextEditingController() ;
-    editText.text=text;
-      return TextFormField(
-        controller: editText,
+  Widget _buildtitle(){
+    final editText1 =TextEditingController() ;
+    final editText2 =TextEditingController() ;
+    final editText3 =TextEditingController() ;
+    final editText4 =TextEditingController() ;
+    editText1.text=widget._data.eventName;
+    editText2.text=widget._data.time;
+    editText3.text=widget._data.venue;
+    editText4.text=widget._data.description;
+
+      return Column(
+        children: <Widget>[ 
+          TextFormField(
+        controller: editText1,
         keyboardType: TextInputType.multiline,
         maxLines: null,
-        decoration: InputDecoration(labelText: label),
+        decoration: InputDecoration(labelText: 'Event Name'),
         validator: (String value){
         if(value.isEmpty){
         return 'Event INFO is required';
@@ -72,8 +85,55 @@ class EventDetailScreenState extends State<EventDetailScreen> {
         },
         onSaved: (String value)
         {
-          //title = value;
+          widget._data.eventName = value;
         },
+        ),
+        TextFormField(
+        controller: editText2,
+        keyboardType: TextInputType.multiline,
+        maxLines: null,
+        decoration: InputDecoration(labelText: 'Venue'),
+        validator: (String value){
+        if(value.isEmpty){
+        return 'Event INFO is required';
+        }
+        },
+        onSaved: (String value)
+        {
+          widget._data.venue = value;
+        },
+        ),
+        TextFormField(
+        controller: editText3,
+        keyboardType: TextInputType.multiline,
+        maxLines: null,
+        decoration: InputDecoration(labelText: 'Time'),
+        validator: (String value){
+        if(value.isEmpty){
+        return 'Event INFO is required';
+        }
+        },
+        onSaved: (String value)
+        {
+          widget._data.time = value;
+        },
+        ),
+        TextFormField(
+        controller: editText4,
+        keyboardType: TextInputType.multiline,
+        maxLines: null,
+        decoration: InputDecoration(labelText: 'Description'),
+        validator: (String value){
+        if(value.isEmpty){
+        return 'Event INFO is required';
+        }
+        },
+        onSaved: (String value)
+        {
+          widget._data.description = value;
+        },
+        ),
+        ],
         );
   }
 
@@ -87,16 +147,17 @@ class EventDetailScreenState extends State<EventDetailScreen> {
           child: Column(
           children: <Widget>[
            // _buildpicture(),
-            _buildtitle(widget._data.eventName, 'Name'),
-            _buildtitle(widget._data.venue, 'Venue'),
-            _buildtitle(widget._data.time, 'Time'),
-            _buildtitle(widget._data.description, 'Description'),
+           _buildtitle(),
            // _builddescription(),
             SizedBox(height:100),
                RaisedButton.icon(
                  onPressed: () 
                  {
-                   
+                   if (_formkey.currentState.validate()) {
+                  _formkey.currentState.save(); }
+                  setState(() {
+                    _isEditable = false;
+                  });
                  },
                  icon : Icon(
                    Icons.check

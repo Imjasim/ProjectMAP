@@ -16,19 +16,17 @@ class ConfessionDetailScreen extends StatefulWidget {
 }
 
 class ConfessionDetailScreenState extends State<ConfessionDetailScreen> {
-  bool _isEditable = false;
-  final editText =TextEditingController() ;
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
 
-  void initState() {
-    editText.text=widget._data.content;
-    return super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          leading: new IconButton(
+          icon: new Icon(Icons.arrow_back),
+          onPressed: (){Navigator.pop(context,widget._data);}
+        ),
           centerTitle: true,
           title: Text('One UTM'),
         backgroundColor: Colors.pink[900],
@@ -36,95 +34,24 @@ class ConfessionDetailScreenState extends State<ConfessionDetailScreen> {
           PopupMenuButton<String>(
             onSelected: choiceAction,
             itemBuilder: (context) {
-            return DotMenu.eventsMenu.map((String eventMenu) {
+            return DotMenu.confessionsMenu.map((String menu) {
             return PopupMenuItem<String> (
-            value: eventMenu,
-            child: Text(eventMenu),
+            value: menu,
+            child: Text(menu),
           );
             }).toList();
             },
           ),
         ],
         ),
-      body: _isEditable ?
-      editable() :
-      nonEditable() 
+      body: nonEditable() 
     );
   }
 
   void choiceAction (String choice) {
-    if (choice == DotMenu.edit) {
-      setState(() {
-        _isEditable = true;
-      });
-    }
-    else if (choice == DotMenu.delete) {
+    if (choice == DotMenu.delete) {
       Navigator.pop(context,1);
     }
-  }
-
-  TextFormField _buildtitle(text, label){
-    final editText =TextEditingController() ;
-    editText.text=text;
-      return TextFormField(
-        controller: editText,
-        keyboardType: TextInputType.multiline,
-        maxLines: null,
-        decoration: InputDecoration(labelText: label),
-        validator: (String value){
-        if(value.isEmpty){
-        return 'Confession is required';
-        }
-        },
-        onSaved: (String value)
-        {
-          //title = value;
-        },
-        );
-  }
-
-  Widget editable() {
-    return Scaffold(
-      body:Container(
-        margin : EdgeInsets.all(24),
-        child : Form(
-          key: _formkey,
-          child: Column(
-          children: <Widget>[
-           // _buildpicture(),
-            _buildtitle(widget._data.content, 'Content'),
-           // _builddescription(),
-            SizedBox(height:100),
-               RaisedButton.icon(
-                 onPressed: () 
-                 {
-                  
-                 },
-                 icon : Icon(
-                   Icons.check
-                 ),
-                 label: Text("Save"),
-                 color: Colors.amber,
-              ),
-              RaisedButton.icon(
-                 onPressed: () 
-                 {
-                   setState(() {
-                  _isEditable = false;
-                  });
-                 },
-                 icon : Icon(
-                   Icons.close
-                 ),
-                 label: Text("Cancel"),
-                 color: Colors.amber,
-              ),
-          ],
-          ),
-        ),
-      ),
-    );
-      //Implement two buttons to save and cancel the changes made to the content of the confession
   }
 
   Widget nonEditable () {
