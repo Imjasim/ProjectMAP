@@ -14,6 +14,7 @@ const String eventDetailsRoute = '/eventDetailsPage';
 const String sellingDetailsRoute = '/sellingDetailsPage';
 const String confessionForm = '/confessionForm';
 const String eventForm = '/EventForm';
+const String salesForm = '/SalesForm';
 
 
 class DotMenu {

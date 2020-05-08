@@ -11,10 +11,10 @@ import 'package:project_map/screens/Logout.dart';
 import 'package:project_map/screens/ConfessionDetailScreen.dart';
 import 'package:project_map/screens/SellingDetailScreen.dart';
 import 'package:project_map/screens/EventDetailScreen.dart';
-import 'screens/post_detail.dart';
 import 'forms/confessionnForm.dart';
 import 'package:project_map/screens/EventScreen.dart';
 import 'forms/EventForm.dart';
+import 'forms/SalesForm.dart';
 
 import 'constants.dart';
 
@@ -83,7 +83,12 @@ Route<dynamic> createRoute(settings) {
 
       case eventForm:
       return MaterialPageRoute(
-        builder: (context) => EventForm(),
+        builder: (context) => NewEventForm(),
+      );
+
+      case salesForm:
+      return MaterialPageRoute(
+        builder: (context) => NewSalesForm(),
       );
 
       case confessionDetailsRoute:

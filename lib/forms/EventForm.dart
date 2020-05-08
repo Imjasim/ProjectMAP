@@ -1,6 +1,23 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-//import 'package:project_map/model/mock_data.dart';
+import 'package:project_map/model/mock_data.dart';
+import 'package:project_map/model/event_class.dart';
+
+class NewEventForm extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final appTitle = 'Event Form ';
+   
+
+    return Scaffold(
+        appBar: AppBar(
+          title: Text(appTitle),
+          backgroundColor: Colors.pink[900],
+        ),
+        body: EventForm(),
+    );
+  }
+}
 
 
 class EventForm extends StatefulWidget{
@@ -12,104 +29,99 @@ class EventForm extends StatefulWidget{
 }
 
 class EventFormState extends State<EventForm>{
-
-  //String picture;
-  String title;
-  String description;
+    final editText1 =TextEditingController() ;
+    final editText2 =TextEditingController() ;
+    final editText3 =TextEditingController() ;
+    final editText4 =TextEditingController() ;
+  Event newEvent ;
 
   final myController= TextEditingController();
-  final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  void dispose()
-  {
-    myController.dispose();
-    super.dispose();
-  }
-  //Widget _buildpicture(){
-   //   return null;
-  //}
   
-  Widget _buildtitle(){
-      return TextFormField(
-        //controller: myController,
-        decoration: InputDecoration(labelText: 'Title'),
-        validator: (String value){
-        if(value.isEmpty){
-        return 'Title is required';
-        }
-        },
-        onSaved: (String value)
-        {
-           return title = value;
-        },
-         
-        );
-  }
-  Widget _builddescription(){
-     return Scaffold(
-       body: Container(
-          margin: EdgeInsets.all(8.0),
-  // hack textfield height
-      padding: EdgeInsets.only(bottom: 40.0),
-      child: TextFormField(
+  @override
+  Widget build(BuildContext context){
+    return Form(
+          key: _formKey,
+          child: Column(
+          children: <Widget>[
+           TextFormField(
+        controller: editText1,
+        keyboardType: TextInputType.multiline,
+        maxLines: null,
+        decoration: InputDecoration(labelText: 'Event Name '),
+        validator: (value){
+            if (value.isEmpty){
+              return "Event Name is required" ;
+            }
+            return null ; 
+          }
+        ),
+        TextFormField(
+        controller: editText2,
+        keyboardType: TextInputType.multiline,
+        maxLines: null,
+        decoration: InputDecoration(labelText: 'Venue'),
+        validator: (value){
+            if (value.isEmpty){
+              return "Venue is required" ;
+            }
+            return null ; 
+          }
+        ),
+          TextFormField(
+        controller: editText3,
+        keyboardType: TextInputType.multiline,
+        maxLines: null,
+        decoration: InputDecoration(labelText: 'Time'),
+        validator: (value){
+            if (value.isEmpty){
+              return "Time is required" ;
+            }
+            return null ; 
+          }
+        ),
+        TextFormField(
+        controller: editText4,
         keyboardType: TextInputType.multiline,
         maxLines: null,
         decoration: InputDecoration(labelText: 'Description'),
-        validator: (String value){
-        if(value.isEmpty){
-        return 'Description is required';
-        }
-        },
-        onSaved: (String value)
-        {
-           return description = value;
-        },
-         
-       )
-     ),
-     );
-  }
-
-  @override
-  Widget build(BuildContext context){
-    return Scaffold(
-      appBar: AppBar(title : Text("Form")),
-      body:Container(
-        margin : EdgeInsets.all(24),
-        child : Form(
-          key: _formkey,
-          child: Column(
-          children: <Widget>[
-           // _buildpicture(),
-            _buildtitle(),
-            _builddescription(),
-            SizedBox(height:100),
-            RaisedButton(
-              child: Text('Post',style: TextStyle(color: Colors.blue, fontSize: 16,),
+        validator: (value){
+            if (value.isEmpty){
+              return "Description is required" ;
+            }
+            return null ; 
+          }
+        ),
+         SizedBox(height:100),
+          RaisedButton.icon(
+                 onPressed: () 
+                 {
+                   if (_formKey.currentState.validate()) {
+                  newEvent = new Event(editText1.text, editText2.text ,editText3.text,editText4.text);
+                  events_data.add(newEvent); 
+                  Navigator.of(context).pop(events_data);
+                  }
+                 },
+                 icon : Icon(
+                   Icons.check
+                 ),
+                 label: Text("Submit"),
+                 color: Colors.amber,
               ),
-              onPressed: ()  {
-                if(!_formkey.currentState.validate()){
-                  return;
-                   //Scaffold.of(context) .showSnackBar(SnackBar(content: Text('Event Posted ')));
-                }
-                if (_formkey.currentState.validate()) {
-                  // If the form is valid, display a Snackbar.
-                  Scaffold.of(context)
-                      .showSnackBar(SnackBar(content: Text('Confession Posted ')));
-                }
-                //print(title);
-                //print(description);
-                setState(() {
-                  //events_data.addAll( ,desctipion);
-                  //events_data.update(title,description);
-                  //events_data.add(this.title,this.description);
-                });
-
-              },)
+              RaisedButton.icon(
+                 onPressed: () 
+                 {
+                   Navigator.of(context).pop(null);
+                 },
+                 icon : Icon(
+                   Icons.close
+                 ),
+                 label: Text("Cancel"),
+                 color: Colors.amber,
+              ),
           ],
           ),
-        ),
-      ),
-    );
+        );
   }
 }

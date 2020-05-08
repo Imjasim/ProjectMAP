@@ -22,7 +22,7 @@ class SellingScreenState extends State<SellingScreen> {
 
   void _navigateAdd() async {
     final returnData = await Navigator.pushNamed(
-      context,confessionForm);
+      context,salesForm);
 
     if (returnData != null) {
       setState(() => _data = returnData);

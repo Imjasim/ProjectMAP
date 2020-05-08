@@ -22,7 +22,7 @@ class EventScreenState extends State<EventScreen> {
 
   void _navigateAdd() async {
     final returnData = await Navigator.pushNamed(
-      context,confessionForm);
+      context,eventForm);
 
     if (returnData != null) {
       setState(() => _data = returnData);

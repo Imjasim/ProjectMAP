@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:project_map/model/mock_data.dart';
-import 'package:project_map/model/confession_class.dart';
+import 'package:project_map/model/sales_class.dart';
 
 
-class NewConfessionForm extends StatelessWidget {
+class NewSalesForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final appTitle = 'Confession Form ';
+    final appTitle = 'Sales Form ';
    
 
     return Scaffold(
@@ -14,25 +14,27 @@ class NewConfessionForm extends StatelessWidget {
           title: Text(appTitle),
           backgroundColor: Colors.pink[900],
         ),
-        body: ConfessionForm(),
+        body: SalesForm(),
     );
   }
 }
 
 
-class ConfessionForm extends StatefulWidget {
+class SalesForm extends StatefulWidget {
   @override
-  ConfessionFormState createState() {
-    return ConfessionFormState();
+  SalesFormState createState() {
+    return SalesFormState();
   }
 
   getPosts() {}
 }
 
-class ConfessionFormState extends State<ConfessionForm>{
+class SalesFormState extends State<SalesForm>{
   final editText1 =TextEditingController() ;
-    final editText2 =TextEditingController() ; 
-  Confession newConfession;
+  final editText2 =TextEditingController() ; 
+  final editText3 =TextEditingController() ;
+
+  Sales newSales;
 
   final _formKey =GlobalKey <FormState>() ; 
   @override
@@ -45,10 +47,10 @@ class ConfessionFormState extends State<ConfessionForm>{
         controller: editText1,
         keyboardType: TextInputType.multiline,
         maxLines: null,
-        decoration: InputDecoration(labelText: 'Subject '),
+        decoration: InputDecoration(labelText: 'Product Name'),
         validator: (value){
             if (value.isEmpty){
-              return "Subject is required" ;
+              return "Product Name is required" ;
             }
             return null ; 
           }
@@ -57,10 +59,22 @@ class ConfessionFormState extends State<ConfessionForm>{
         controller: editText2,
         keyboardType: TextInputType.multiline,
         maxLines: null,
-        decoration: InputDecoration(labelText: 'Confession'),
+        decoration: InputDecoration(labelText: 'Product Price'),
         validator: (value){
             if (value.isEmpty){
-              return "Confession is required" ;
+              return "Product Price is required" ;
+            }
+            return null ; 
+          }
+        ),
+        TextFormField(
+        controller: editText3,
+        keyboardType: TextInputType.multiline,
+        maxLines: null,
+        decoration: InputDecoration(labelText: 'Product Description'),
+        validator: (value){
+            if (value.isEmpty){
+              return "Product Description is required" ;
             }
             return null ; 
           }
@@ -70,9 +84,9 @@ class ConfessionFormState extends State<ConfessionForm>{
                  onPressed: () 
                  {
                    if (_formKey.currentState.validate()) {
-                  newConfession = new Confession('Liknesh', editText1.text, editText2.text);
-                  confessions_data.add(newConfession); 
-                  Navigator.of(context).pop(confessions_data);
+                  newSales = new Sales( editText1.text, editText2.text, editText3.text);
+                  sales_data.add(newSales); 
+                  Navigator.of(context).pop(sales_data );
                   }
                  },
                  icon : Icon(
