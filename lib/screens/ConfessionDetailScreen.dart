@@ -66,6 +66,8 @@ class ConfessionDetailScreenState extends State<ConfessionDetailScreen> {
   Widget _buildtitle(){
       return TextFormField(
         controller: editText,
+        keyboardType: TextInputType.multiline,
+        maxLines: null,
         decoration: InputDecoration(labelText: 'Title'),
         validator: (String value){
         if(value.isEmpty){
