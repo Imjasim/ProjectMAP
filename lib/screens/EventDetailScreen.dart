@@ -68,10 +68,10 @@ class EventDetailScreenState extends State<EventDetailScreen> {
         controller: editText,
         keyboardType: TextInputType.multiline,
         maxLines: null,
-        decoration: InputDecoration(labelText: 'Title'),
+        decoration: InputDecoration(labelText: 'INFO'),
         validator: (String value){
         if(value.isEmpty){
-        return 'Title is required';
+        return 'Event INFO is required';
         }
         },
         onSaved: (String value)
