@@ -33,7 +33,8 @@ class EventScreenState extends State<EventScreen> {
   //navigation method when user clicks on the content tile
   void _navigateEdit(List events,int index) async {
     final returnData = await Navigator.pushNamed(context, eventDetailsRoute, 
-          arguments: Event.copy(events[index]));
+          arguments: Event.copy(events[index])
+          );
 
     if (returnData != null) {
       if (returnData ==1){
@@ -57,9 +58,41 @@ class EventScreenState extends State<EventScreen> {
           color: Colors.pink[600],
           child: ListView.separated(
         itemCount: _data.length,
-        itemBuilder: (context, index) => _listTile(
+        itemBuilder: (context, index) => Dismissible (
+          key: Key(_data[index].eventName),
+          background: Container (
+            alignment: AlignmentDirectional.centerStart,
+            color: Colors.blue,
+            child: Icon (
+              Icons.edit,
+              color: Colors.white,
+            )
+            ),
+            secondaryBackground: Container (
+            alignment: AlignmentDirectional.centerEnd,
+            color: Colors.red,
+            child: Icon (
+              Icons.delete,
+              color: Colors.white,
+            )
+            ),
+          confirmDismiss: (direction) {
+            if (direction == DismissDirection.endToStart ) {
+            setState(() {
+              _data.removeAt(index);
+            });
+            Scaffold.of(context)
+                    .showSnackBar(SnackBar(content: Text("Event dismissed")));
+          }
+          else if (direction == DismissDirection.startToEnd ) {
+            _navigateEdit(_data, index);
+          }
+          return null;
+          },
+          child: _listTile(
           index,
           _data,
+        ),
         ),
         separatorBuilder: (context, index) => Divider(
           //color: Colors.grey,

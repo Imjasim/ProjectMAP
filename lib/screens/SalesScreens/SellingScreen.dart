@@ -57,9 +57,41 @@ class SellingScreenState extends State<SellingScreen> {
           color: Colors.pink[600],
           child: ListView.separated(
         itemCount: _data.length,
-        itemBuilder: (context, index) => _listTile(
+        itemBuilder: (context, index) => Dismissible (
+          key: Key(_data[index].prodName),
+          background: Container (
+            alignment: AlignmentDirectional.centerStart,
+            color: Colors.blue,
+            child: Icon (
+              Icons.edit,
+              color: Colors.white,
+            )
+            ),
+            secondaryBackground: Container (
+            alignment: AlignmentDirectional.centerEnd,
+            color: Colors.red,
+            child: Icon (
+              Icons.delete,
+              color: Colors.white,
+            )
+            ),
+          confirmDismiss: (direction) {
+            if (direction == DismissDirection.endToStart ) {
+            setState(() {
+              _data.removeAt(index);
+            });
+            Scaffold.of(context)
+                    .showSnackBar(SnackBar(content: Text("Sales dismissed")));
+          }
+          else if (direction == DismissDirection.startToEnd ) {
+            _navigateEdit(_data, index);
+          }
+          return null;
+          },
+          child: _listTile(
           index,
           _data,
+        ),
         ),
         separatorBuilder: (context, index) => Divider(
           //color: Colors.grey,
