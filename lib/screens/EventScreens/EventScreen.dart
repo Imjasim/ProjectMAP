@@ -1,44 +1,46 @@
 import 'package:flutter/material.dart';
-import 'package:project_map/model/sales_class.dart';
-import '../constants.dart';
+import 'package:project_map/model/event_class.dart';
+import '../../constants.dart';
 
-class SellingScreen extends StatefulWidget {
+class EventScreen extends StatefulWidget {
   final List _data;
 
-  SellingScreen(this._data);
+  EventScreen(this._data);
 
   
 
   @override
-  SellingScreenState createState(){
-    return SellingScreenState(_data);
+  EventScreenState createState(){
+    return EventScreenState(_data);
   }
 }
 
-class SellingScreenState extends State<SellingScreen> {
+class EventScreenState extends State<EventScreen> {
   List _data;
 
-  SellingScreenState(this._data);
+  EventScreenState(this._data);
 
+//navigation method when user clicks on the add button
   void _navigateAdd() async {
     final returnData = await Navigator.pushNamed(
-      context,salesForm);
+      context,eventForm);
 
     if (returnData != null) {
       setState(() => _data = returnData);
     }
   }
 
-  void _navigateEdit(List sales,int index) async {
-    final returnData = await Navigator.pushNamed(context, sellingDetailsRoute, 
-          arguments: Sales.copy(sales[index]));
+  //navigation method when user clicks on the content tile
+  void _navigateEdit(List events,int index) async {
+    final returnData = await Navigator.pushNamed(context, eventDetailsRoute, 
+          arguments: Event.copy(events[index]));
 
     if (returnData != null) {
       if (returnData ==1){
-        setState(() => sales.removeAt(index));
+        setState(() => events.removeAt(index));
       }
       else{
-      setState(() => sales[index] = returnData);
+      setState(() => events[index] = returnData);
       }
     }
   }
@@ -73,15 +75,15 @@ class SellingScreenState extends State<SellingScreen> {
     );
   }
 
-  Widget _listTile (index,sales) {
+  Widget _listTile (index,events) {
     return Card(
         margin: EdgeInsets.only(left: 10,right: 10,top: 10),
     child: ListTile(
 	
           leading: Icon(Icons.bookmark_border, size: 50),
-          title: Text(sales[index].prodName),
-          subtitle: Text(sales[index].prodDesc),
-          onTap: () => _navigateEdit(sales, index),
+          title: Text(events[index].eventName),
+          subtitle: Text(events[index].description),
+          onTap: () => _navigateEdit(events, index),
         ),
   );
   }

@@ -40,7 +40,7 @@ class _MyHomePageState extends State<Logout> {
                               FlatButton(
                                   child: Text("Close"),
                                   onPressed: (){
-                                  Navigator.pushReplacementNamed(context,loginRoute);
+                                  Navigator.of(context).pushNamedAndRemoveUntil(loginRoute, (Route<dynamic> route) => false);
                                })
                              ],
                           );
@@ -51,7 +51,8 @@ class _MyHomePageState extends State<Logout> {
           const SizedBox(width: 20.0),            
             RaisedButton(child:Text("NO "), 
               onPressed: (){
-                  Navigator.pushReplacementNamed(context,mainPage);
+                  //Navigator.pushReplacementNamed(context,mainPage);
+                  Navigator.pop(context);
                   },
                  )
                 ],

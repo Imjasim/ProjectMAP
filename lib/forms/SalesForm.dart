@@ -10,6 +10,7 @@ class NewSalesForm extends StatelessWidget {
    
 
     return Scaffold(
+      resizeToAvoidBottomInset: false,
         appBar: AppBar(
           title: Text(appTitle),
           backgroundColor: Colors.pink[900],
@@ -26,7 +27,6 @@ class SalesForm extends StatefulWidget {
     return SalesFormState();
   }
 
-  getPosts() {}
 }
 
 class SalesFormState extends State<SalesForm>{
@@ -85,8 +85,8 @@ class SalesFormState extends State<SalesForm>{
                  {
                    if (_formKey.currentState.validate()) {
                   newSales = new Sales( editText1.text, editText2.text, editText3.text);
-                  sales_data.add(newSales); 
-                  Navigator.of(context).pop(sales_data );
+                  salesData.add(newSales); 
+                  Navigator.of(context).pop(salesData );
                   }
                  },
                  icon : Icon(

@@ -10,6 +10,7 @@ class NewConfessionForm extends StatelessWidget {
    
 
     return Scaffold(
+      resizeToAvoidBottomInset: false,
         appBar: AppBar(
           title: Text(appTitle),
           backgroundColor: Colors.pink[900],
@@ -26,7 +27,6 @@ class ConfessionForm extends StatefulWidget {
     return ConfessionFormState();
   }
 
-  getPosts() {}
 }
 
 class ConfessionFormState extends State<ConfessionForm>{
@@ -71,8 +71,8 @@ class ConfessionFormState extends State<ConfessionForm>{
                  {
                    if (_formKey.currentState.validate()) {
                   newConfession = new Confession('Liknesh', editText1.text, editText2.text);
-                  confessions_data.add(newConfession); 
-                  Navigator.of(context).pop(confessions_data);
+                  confessionsData.add(newConfession); 
+                  Navigator.of(context).pop(confessionsData);
                   }
                  },
                  icon : Icon(

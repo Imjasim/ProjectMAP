@@ -10,6 +10,7 @@ class NewEventForm extends StatelessWidget {
    
 
     return Scaffold(
+      resizeToAvoidBottomInset: false,
         appBar: AppBar(
           title: Text(appTitle),
           backgroundColor: Colors.pink[900],
@@ -99,8 +100,8 @@ class EventFormState extends State<EventForm>{
                  {
                    if (_formKey.currentState.validate()) {
                   newEvent = new Event(editText1.text, editText2.text ,editText3.text,editText4.text);
-                  events_data.add(newEvent); 
-                  Navigator.of(context).pop(events_data);
+                  eventsData.add(newEvent); 
+                  Navigator.of(context).pop(eventsData);
                   }
                  },
                  icon : Icon(

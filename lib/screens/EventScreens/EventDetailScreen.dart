@@ -1,32 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:project_map/model/sales_class.dart';
-import '../constants.dart';
+import 'package:project_map/model/event_class.dart';
+import '../../constants.dart';
 
-class SellingDetailScreen extends StatefulWidget {
-  final Sales _data;
+class EventDetailScreen extends StatefulWidget {
+  final Event _data;
 
-  SellingDetailScreen(this._data);
+  EventDetailScreen(this._data);
 
   
 
   @override
-  SellingDetailScreenState createState(){
-    return SellingDetailScreenState();
+  EventDetailScreenState createState(){
+    return EventDetailScreenState();
   }
 }
 
-class SellingDetailScreenState extends State<SellingDetailScreen> {
+class EventDetailScreenState extends State<EventDetailScreen> {
   bool _isEditable = false;
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
-
-  /*void initState() {
-    //editText.text=widget._data.prodName;
-    return super.initState();
-  }*/
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
         appBar: AppBar(
           leading: new IconButton(
           icon: new Icon(Icons.arrow_back),
@@ -55,7 +51,6 @@ class SellingDetailScreenState extends State<SellingDetailScreen> {
     );
   }
 
-//Choices for 3 dot menu
   void choiceAction (String choice) {
     if (choice == DotMenu.edit) {
       setState(() {
@@ -67,14 +62,15 @@ class SellingDetailScreenState extends State<SellingDetailScreen> {
     }
   }
 
-//Editable section for products
   Widget _buildtitle(){
     final editText1 =TextEditingController() ;
     final editText2 =TextEditingController() ;
     final editText3 =TextEditingController() ;
-    editText1.text=widget._data.prodName;
-    editText2.text=widget._data.prodPrice;
-    editText3.text=widget._data.prodDesc;
+    final editText4 =TextEditingController() ;
+    editText1.text=widget._data.eventName;
+    editText2.text=widget._data.time;
+    editText3.text=widget._data.venue;
+    editText4.text=widget._data.description;
 
       return Column(
         children: <Widget>[ 
@@ -82,75 +78,94 @@ class SellingDetailScreenState extends State<SellingDetailScreen> {
         controller: editText1,
         keyboardType: TextInputType.multiline,
         maxLines: null,
-        decoration: InputDecoration(labelText: 'Product Name'),
+        decoration: InputDecoration(labelText: 'Event Name'),
         validator: (String value){
         if(value.isEmpty){
-        return 'Selling INFO is required';
+        return 'Event INFO is required';
         }
+        return null;
         },
         onSaved: (String value)
         {
-          widget._data.prodName = value;
+          widget._data.eventName = value;
         },
         ),
         TextFormField(
         controller: editText2,
         keyboardType: TextInputType.multiline,
         maxLines: null,
-        decoration: InputDecoration(labelText: 'Product Price'),
+        decoration: InputDecoration(labelText: 'Venue'),
         validator: (String value){
         if(value.isEmpty){
-        return 'Selling INFO is required';
+        return 'Event INFO is required';
         }
+        return null;
         },
         onSaved: (String value)
         {
-          widget._data.prodPrice = value;
+          widget._data.venue = value;
         },
         ),
         TextFormField(
         controller: editText3,
         keyboardType: TextInputType.multiline,
         maxLines: null,
-        decoration: InputDecoration(labelText: 'Product Description'),
+        decoration: InputDecoration(labelText: 'Time'),
         validator: (String value){
         if(value.isEmpty){
-        return 'Selling INFO is required';
+        return 'Event INFO is required';
         }
+        return null;
         },
         onSaved: (String value)
         {
-          widget._data.prodDesc = value;
+          widget._data.time = value;
+        },
+        ),
+        TextFormField(
+        controller: editText4,
+        keyboardType: TextInputType.multiline,
+        maxLines: null,
+        decoration: InputDecoration(labelText: 'Description'),
+        validator: (String value){
+        if(value.isEmpty){
+        return 'Event INFO is required';
+        }
+        return null;
+        },
+        onSaved: (String value)
+        {
+          widget._data.description = value;
         },
         ),
         ],
         );
   }
 
- //Implement two buttons to save and cancel the changes made to the content of the confession
+  //Implement two buttons to save and cancel the changes made to the content of the confession
+
   Widget editable() {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body:Container(
         margin : EdgeInsets.all(24),
         child : Form(
           key: _formkey,
           child: Column(
           children: <Widget>[
-            _buildtitle(),
            // _buildpicture(),
-            /*_buildtitle(widget._data.prodName, 'Product Name'),
-            _buildtitle(widget._data.prodPrice, 'Product Price'),
-            _buildtitle(widget._data.prodDesc, 'Product Description'),*/
+           _buildtitle(),
            // _builddescription(),
             SizedBox(height:100),
                RaisedButton.icon(
                  onPressed: () 
                  {
                    if (_formkey.currentState.validate()) {
-                  _formkey.currentState.save(); }
+                  _formkey.currentState.save(); 
                   setState(() {
                     _isEditable = false;
                   });
+                   }
                  },
                  icon : Icon(
                    Icons.check
@@ -159,11 +174,12 @@ class SellingDetailScreenState extends State<SellingDetailScreen> {
                  color: Colors.amber,
               ),
               RaisedButton.icon(
-                 onPressed: () { 
-                   setState(() {
+                 onPressed: () 
+                 {
+                  setState(() {
                   _isEditable = false;
                   });
-                },
+                 },
                  icon : Icon(
                    Icons.close
                  ),
@@ -177,7 +193,6 @@ class SellingDetailScreenState extends State<SellingDetailScreen> {
     );
   }
 
-  //Noneditable section for products
   Widget nonEditable () {
     return SingleChildScrollView(
           child: Padding(
@@ -190,7 +205,7 @@ class SellingDetailScreenState extends State<SellingDetailScreen> {
                     children: <Widget>[
                      Row( 
                         children: <Widget>[
-                          new Text("Details",style: new TextStyle(fontSize:30.0,),textAlign: TextAlign.left,),
+                          new Text("${widget._data.eventName}",style: new TextStyle(fontSize:30.0,),textAlign: TextAlign.left,),
                         ],
                         ),  
                          Row( 
@@ -205,8 +220,8 @@ class SellingDetailScreenState extends State<SellingDetailScreen> {
                               child: new Column(
                                 children: <Widget>[
                                   ListTile(
-                                    title: Text("Name"),
-                                    subtitle: Text("${widget._data.prodName}"),
+                                    title: Text("Venue"),
+                                    subtitle: Text("${widget._data.venue}"),
                                   ),
                                 ],),
                                )
@@ -221,8 +236,8 @@ class SellingDetailScreenState extends State<SellingDetailScreen> {
                               child: new Column(
                                 children: <Widget>[
                                   ListTile(
-                                    title: Text("Price"),
-                                    subtitle: Text("${widget._data.prodPrice}"),
+                                    title: Text("Time"),
+                                    subtitle: Text("${widget._data.time}"),
                                   ),
                                 ],),
                                )
@@ -243,7 +258,7 @@ class SellingDetailScreenState extends State<SellingDetailScreen> {
                                 children: <Widget>[
                                   ListTile(
                                     title: Text("Description"),
-                                    subtitle: Text("${widget._data.prodDesc}"),
+                                    subtitle: Text("${widget._data.description}"),
                                   ),
                                 ],),
                                )

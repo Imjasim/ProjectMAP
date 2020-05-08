@@ -32,8 +32,8 @@ class SettingsPage extends State<Settings> {
                       color: Colors.indigo,
                     ),
           ),
-          _buildSwitch('Receive Notification',_noti),
-          _buildSwitch('Receive Newsletter', _news),
+          _buildSwitch('Receive Notification', _noti,'noti'),
+          _buildSwitch('Receive Newsletter', _news, 'news'),
           const SizedBox(height: 20.0),
           Card(
                     elevation: 4.0,
@@ -60,12 +60,15 @@ class SettingsPage extends State<Settings> {
 
 
 
-  Widget _buildSwitch (text,_v) {
+  Widget _buildSwitch (text,_v, id) {
     return SwitchListTile(
             title: Text(text),
             value: _v,
             onChanged: (value)=>setState((){
-              _v=value;
+              if (id == 'noti')
+              value=!value;
+              else if (id == 'news')
+              _news=!value;
             }
             ),
           );

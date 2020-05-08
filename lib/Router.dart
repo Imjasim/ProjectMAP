@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:project_map/main.dart';
 import 'package:project_map/model/mock_data.dart';
-import 'package:project_map/screens/ConfessionScreen.dart';
-import 'package:project_map/screens/SellingScreen.dart';
+import 'package:project_map/screens/ConfessionScreens/ConfessionScreen.dart';
+import 'package:project_map/screens/SalesScreens/SellingScreen.dart';
 import 'package:project_map/screens/Home.dart';
 import 'package:project_map/screens/Profile.dart';
 import 'package:project_map/screens/Settings.dart';
 import 'package:project_map/screens/Login.dart';
 import 'package:project_map/screens/Logout.dart';
-import 'package:project_map/screens/ConfessionDetailScreen.dart';
-import 'package:project_map/screens/SellingDetailScreen.dart';
-import 'package:project_map/screens/EventDetailScreen.dart';
+import 'package:project_map/screens/ConfessionScreens/ConfessionDetailScreen.dart';
+import 'package:project_map/screens/SalesScreens/SellingDetailScreen.dart';
+import 'package:project_map/screens/EventScreens/EventDetailScreen.dart';
 import 'forms/confessionnForm.dart';
-import 'package:project_map/screens/EventScreen.dart';
+import 'package:project_map/screens/EventScreens/EventScreen.dart';
 import 'forms/EventForm.dart';
 import 'forms/SalesForm.dart';
 
@@ -58,17 +58,17 @@ Route<dynamic> createRoute(settings) {
 
       case confessionRoute:
       return MaterialPageRoute(
-        builder: (context) => ConfessionScreen(confessions_data),
+        builder: (context) => ConfessionScreen(confessionsData),
       );
 
       case eventRoute:
       return MaterialPageRoute(
-        builder: (context) => EventScreen(events_data),
+        builder: (context) => EventScreen(eventsData),
       );
 
       case sellingRoute:
       return MaterialPageRoute(
-        builder: (context) => SellingScreen(sales_data),
+        builder: (context) => SellingScreen(salesData),
       );
 
       case sellingRoute:

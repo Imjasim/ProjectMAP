@@ -31,6 +31,7 @@ class HomeState extends State<Home> {
     );
   }
 
+//To display options provide for user to view
   Widget _listTile (title, desc, route) {
     return Card(
         margin: EdgeInsets.only(left: 10,right: 10,top: 10),
@@ -44,34 +45,3 @@ class HomeState extends State<Home> {
   );
   }
 }
-
-
-
-/*class _ListTile extends StatefulWidget {
-  final String title;
-  final String desc; 
-  final String route;
-  _ListTile(this.title, this.desc, this.route);
-
-  @override
-  __ListTileState createState() => __ListTileState();
-}
-
-class __ListTileState extends State<_ListTile> {
-
-  @override
-  
-  Widget build(BuildContext context) {
-      return Card(
-        margin: EdgeInsets.only(left: 10,right: 10,top: 10),
-    child: ListTile(
-	
-          leading: Icon(Icons.bookmark_border, size: 50),
-          title: Text(widget.title),
-          subtitle: Text(widget.desc),
-          onTap: () { Navigator.pushNamed(context, logoutRoute);
-        }
-        ),
-  );
-  }
-}*/

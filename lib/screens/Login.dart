@@ -108,34 +108,3 @@ class Login extends StatefulWidget {
         );
       }
     }
-//<<<<<<< HEAD:lib/Login.dart
-
-
-    
-/*class Login extends StatelessWidget{
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home:Scaffold(
-        body: Center(
-          child: Text('This is just a dummy Login page'),
-          ),
-          floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => MyApp()),
-            );
-          },
-        label: Text('Login'),
-        backgroundColor: Colors.blue,
-        icon: Icon(Icons.verified_user),
-        ),
-      ),
-    );
-  }
-<<<<<<< HEAD
-} */
-
-

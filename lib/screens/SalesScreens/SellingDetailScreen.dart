@@ -1,27 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:project_map/model/event_class.dart';
-import '../constants.dart';
+import 'package:project_map/model/sales_class.dart';
+import '../../constants.dart';
 
-class EventDetailScreen extends StatefulWidget {
-  final Event _data;
+class SellingDetailScreen extends StatefulWidget {
+  final Sales _data;
 
-  EventDetailScreen(this._data);
+  SellingDetailScreen(this._data);
 
   
 
   @override
-  EventDetailScreenState createState(){
-    return EventDetailScreenState();
+  SellingDetailScreenState createState(){
+    return SellingDetailScreenState();
   }
 }
 
-class EventDetailScreenState extends State<EventDetailScreen> {
+class SellingDetailScreenState extends State<SellingDetailScreen> {
   bool _isEditable = false;
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
         appBar: AppBar(
           leading: new IconButton(
           icon: new Icon(Icons.arrow_back),
@@ -50,6 +51,7 @@ class EventDetailScreenState extends State<EventDetailScreen> {
     );
   }
 
+//Choices for 3 dot menu
   void choiceAction (String choice) {
     if (choice == DotMenu.edit) {
       setState(() {
@@ -61,15 +63,14 @@ class EventDetailScreenState extends State<EventDetailScreen> {
     }
   }
 
+//Editable section for products
   Widget _buildtitle(){
     final editText1 =TextEditingController() ;
     final editText2 =TextEditingController() ;
     final editText3 =TextEditingController() ;
-    final editText4 =TextEditingController() ;
-    editText1.text=widget._data.eventName;
-    editText2.text=widget._data.time;
-    editText3.text=widget._data.venue;
-    editText4.text=widget._data.description;
+    editText1.text=widget._data.prodName;
+    editText2.text=widget._data.prodPrice;
+    editText3.text=widget._data.prodDesc;
 
       return Column(
         children: <Widget>[ 
@@ -77,87 +78,75 @@ class EventDetailScreenState extends State<EventDetailScreen> {
         controller: editText1,
         keyboardType: TextInputType.multiline,
         maxLines: null,
-        decoration: InputDecoration(labelText: 'Event Name'),
+        decoration: InputDecoration(labelText: 'Product Name'),
         validator: (String value){
         if(value.isEmpty){
-        return 'Event INFO is required';
+        return 'Selling INFO is required';
         }
+        return null;
         },
         onSaved: (String value)
         {
-          widget._data.eventName = value;
+          widget._data.prodName = value;
         },
         ),
         TextFormField(
         controller: editText2,
         keyboardType: TextInputType.multiline,
         maxLines: null,
-        decoration: InputDecoration(labelText: 'Venue'),
+        decoration: InputDecoration(labelText: 'Product Price'),
         validator: (String value){
         if(value.isEmpty){
-        return 'Event INFO is required';
+        return 'Selling INFO is required';
         }
+        return null;
         },
         onSaved: (String value)
         {
-          widget._data.venue = value;
+          widget._data.prodPrice = value;
         },
         ),
         TextFormField(
         controller: editText3,
         keyboardType: TextInputType.multiline,
         maxLines: null,
-        decoration: InputDecoration(labelText: 'Time'),
+        decoration: InputDecoration(labelText: 'Product Description'),
         validator: (String value){
         if(value.isEmpty){
-        return 'Event INFO is required';
+        return 'Selling INFO is required';
         }
+        return null;
         },
         onSaved: (String value)
         {
-          widget._data.time = value;
-        },
-        ),
-        TextFormField(
-        controller: editText4,
-        keyboardType: TextInputType.multiline,
-        maxLines: null,
-        decoration: InputDecoration(labelText: 'Description'),
-        validator: (String value){
-        if(value.isEmpty){
-        return 'Event INFO is required';
-        }
-        },
-        onSaved: (String value)
-        {
-          widget._data.description = value;
+          widget._data.prodDesc = value;
         },
         ),
         ],
         );
   }
 
+ //Implement two buttons to save and cancel the changes made to the content of the confession
   Widget editable() {
     return Scaffold(
-        //appBar: AppBar(title : Text("EditForm")),
+      resizeToAvoidBottomInset: false,
       body:Container(
         margin : EdgeInsets.all(24),
         child : Form(
           key: _formkey,
           child: Column(
           children: <Widget>[
-           // _buildpicture(),
-           _buildtitle(),
-           // _builddescription(),
+            _buildtitle(),
             SizedBox(height:100),
                RaisedButton.icon(
                  onPressed: () 
                  {
                    if (_formkey.currentState.validate()) {
-                  _formkey.currentState.save(); }
+                  _formkey.currentState.save(); 
                   setState(() {
                     _isEditable = false;
                   });
+                   }
                  },
                  icon : Icon(
                    Icons.check
@@ -166,12 +155,11 @@ class EventDetailScreenState extends State<EventDetailScreen> {
                  color: Colors.amber,
               ),
               RaisedButton.icon(
-                 onPressed: () 
-                 {
-                  setState(() {
+                 onPressed: () { 
+                   setState(() {
                   _isEditable = false;
                   });
-                 },
+                },
                  icon : Icon(
                    Icons.close
                  ),
@@ -183,9 +171,9 @@ class EventDetailScreenState extends State<EventDetailScreen> {
         ),
       ),
     );
-      //Implement two buttons to save and cancel the changes made to the content of the confession
   }
 
+  //Noneditable section for products
   Widget nonEditable () {
     return SingleChildScrollView(
           child: Padding(
@@ -198,7 +186,7 @@ class EventDetailScreenState extends State<EventDetailScreen> {
                     children: <Widget>[
                      Row( 
                         children: <Widget>[
-                          new Text("${widget._data.eventName}",style: new TextStyle(fontSize:30.0,),textAlign: TextAlign.left,),
+                          new Text("Details",style: new TextStyle(fontSize:30.0,),textAlign: TextAlign.left,),
                         ],
                         ),  
                          Row( 
@@ -213,8 +201,8 @@ class EventDetailScreenState extends State<EventDetailScreen> {
                               child: new Column(
                                 children: <Widget>[
                                   ListTile(
-                                    title: Text("Venue"),
-                                    subtitle: Text("${widget._data.venue}"),
+                                    title: Text("Name"),
+                                    subtitle: Text("${widget._data.prodName}"),
                                   ),
                                 ],),
                                )
@@ -229,8 +217,8 @@ class EventDetailScreenState extends State<EventDetailScreen> {
                               child: new Column(
                                 children: <Widget>[
                                   ListTile(
-                                    title: Text("Time"),
-                                    subtitle: Text("${widget._data.time}"),
+                                    title: Text("Price"),
+                                    subtitle: Text("${widget._data.prodPrice}"),
                                   ),
                                 ],),
                                )
@@ -251,7 +239,7 @@ class EventDetailScreenState extends State<EventDetailScreen> {
                                 children: <Widget>[
                                   ListTile(
                                     title: Text("Description"),
-                                    subtitle: Text("${widget._data.description}"),
+                                    subtitle: Text("${widget._data.prodDesc}"),
                                   ),
                                 ],),
                                )

@@ -11,20 +11,11 @@ import 'constants.dart';
 
 void main() => runApp(MaterialApp(
       debugShowCheckedModeBanner: false,
-      //home: MyApp(),
-      //Login(),
       initialRoute: //confessionForm,
       //confessionRoute,
-      mainPage,
-      //loginRoute,
+      //mainPage,
+      loginRoute,
       onGenerateRoute: createRoute,
-      /*routes: {
-        "/main": (_) => MyApp(),
-        "/splash": (_) => MYsplash(),
-        "/Logout": (_) => Logout(),
-        "/Login": (_) => Login(),
-        "/Confession": (_) => ConfessionScreen(),
-      },*/
 ));
 
 class MyApp extends StatefulWidget {
@@ -80,7 +71,7 @@ class MyAppState extends State<MyApp> {
 }
 
 
-
+//Class for splash screen
 class MYsplash extends StatefulWidget {
   @override
   _State createState() => _State();

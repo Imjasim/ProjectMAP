@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:project_map/model/confession_class.dart';
-import '../constants.dart';
+import '../../constants.dart';
 
 class ConfessionDetailScreen extends StatefulWidget {
   final Confession _data;
@@ -16,7 +16,6 @@ class ConfessionDetailScreen extends StatefulWidget {
 }
 
 class ConfessionDetailScreenState extends State<ConfessionDetailScreen> {
-  final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
 
 
   @override
