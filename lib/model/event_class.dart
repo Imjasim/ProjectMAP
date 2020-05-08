@@ -5,5 +5,5 @@ class Event  {
   String description  ;
 
   Event(this.eventName, this.venue, this.time, this.description );
-  //Confession.copy(Confession from) : this(from.username, from.subject, from.content);
+  Event.copy(Event from) : this(from.eventName, from.venue, from.time, from.description);
 }

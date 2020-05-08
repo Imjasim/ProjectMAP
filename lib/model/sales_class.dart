@@ -4,5 +4,5 @@ class Sales {
   String prodDesc;
 
   Sales (this.prodName, this.prodPrice, this.prodDesc);
-  //Confession.copy(Confession from) : this(from.username, from.subject, from.content);
+  Sales.copy(Sales from) : this(from.prodName, from.prodPrice, from.prodDesc);
 }

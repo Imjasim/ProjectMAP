@@ -2,12 +2,46 @@ import 'package:flutter/material.dart';
 import 'package:project_map/model/event_class.dart';
 import '../constants.dart';
 
-
-
-class EventScreen extends StatelessWidget {
+class EventScreen extends StatefulWidget {
   final List _data;
 
   EventScreen(this._data);
+
+  
+
+  @override
+  EventScreenState createState(){
+    return EventScreenState(_data);
+  }
+}
+
+class EventScreenState extends State<EventScreen> {
+  List _data;
+
+  EventScreenState(this._data);
+
+  void _navigateAdd() async {
+    final returnData = await Navigator.pushNamed(
+      context,confessionForm);
+
+    if (returnData != null) {
+      setState(() => _data = returnData);
+    }
+  }
+
+  void _navigateEdit(List events,int index) async {
+    final returnData = await Navigator.pushNamed(context, eventDetailsRoute, 
+          arguments: Event.copy(events[index]));
+
+    if (returnData != null) {
+      if (returnData ==1){
+        setState(() => events.removeAt(index));
+      }
+      else{
+      setState(() => events[index] = returnData);
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,12 +55,12 @@ class EventScreen extends StatelessWidget {
           color: Colors.pink[600],
           child: ListView.separated(
         itemCount: _data.length,
-        itemBuilder: (context, index) => _ListTile(
-          index: index,
-          confessions: _data,
+        itemBuilder: (context, index) => _listTile(
+          index,
+          _data,
         ),
         separatorBuilder: (context, index) => Divider(
-          color: Colors.grey,
+          //color: Colors.grey,
         ),
       ),
       ),
@@ -34,50 +68,22 @@ class EventScreen extends StatelessWidget {
               label: const Text(''),
               icon: const Icon(Icons.add_circle),
               heroTag: null,
-              onPressed: () => Navigator.pushNamed(context, eventForm),
+              onPressed: () => _navigateAdd(),
             ),
     );
   }
-}
 
-class _ListTile extends StatefulWidget {
-  final int index;
-  final List<Event> confessions;
-
-  _ListTile({this.index, this.confessions});
-
-  @override
-  __ListTileState createState() => __ListTileState();
-}
-
-class __ListTileState extends State<_ListTile> {
-  void _navigate() async {
-     await Navigator.pushNamed(context, detailsRoute,
-        //arguments: Assessment.copy(widget.assessements[widget.index])
-        );
-
-  }
-
-  @override
-  
-  Widget build(BuildContext context) {
-      return Card(
+  Widget _listTile (index,events) {
+    return Card(
         margin: EdgeInsets.only(left: 10,right: 10,top: 10),
-    child: Column(
-      mainAxisSize: MainAxisSize.min,
-      children: <Widget>[
-        InkWell (
-          onTap: () {},
-        child: ListTile(
+    child: ListTile(
 	
-          leading: Icon(Icons.leak_remove, size: 50),
-          title: Text(widget.confessions[widget.index].eventName),
-          subtitle: Text(widget.confessions[widget.index].description),
-          onTap: () => _navigate(),
+          leading: Icon(Icons.bookmark_border, size: 50),
+          title: Text(events[index].eventName),
+          subtitle: Text(events[index].description),
+          onTap: () => _navigateEdit(events, index),
         ),
-        ),
-      ],
-    ),
   );
   }
+
 }

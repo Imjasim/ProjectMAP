@@ -9,7 +9,9 @@ const String splashRoute = '/splash';
 const String confessionRoute = '/confession';
 const String sellingRoute = '/selling';
 const String eventRoute = '/event';
-const String detailsRoute = '/detailsPage';
+const String confessionDetailsRoute = '/confessionDetailsPage';
+const String eventDetailsRoute = '/eventDetailsPage';
+const String sellingDetailsRoute = '/sellingDetailsPage';
 const String confessionForm = '/confessionForm';
 const String eventForm = '/EventForm';
 
