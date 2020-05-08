@@ -80,6 +80,7 @@ class PostDetail extends StatelessWidget {
                                 color: Color(0x03EEEE)
                               ),
                               child: new Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: <Widget>[
                                   ListTile(
                                     title: Text("Username"),
