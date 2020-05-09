@@ -8,7 +8,7 @@ MUHAMMAD JASIM BIN MOHD MOHIDEEN (A17CS0121)
 LIKNESHKANTH RAO A/L MUNIANDY (A17CS0075)
 NUR NABILA BINTI ZAKARIA (A17CS0159)
 
-Project Deliverable 1 youtube link : https://www.youtube.com/watch?v=MvsvRYuHPfI
+Project Deliverable 2 youtube link : https://www.youtube.com/watch?v=MvsvRYuHPfI
 Project Deliverable 3 youtube link : https://www.youtube.com/watch?v=NGrLUSlP7ok
 
 Login credentials to login: 
