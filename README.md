@@ -10,6 +10,7 @@ NUR NABILA BINTI ZAKARIA (A17CS0159)
 
 Project Deliverable 2 youtube link : https://www.youtube.com/watch?v=MvsvRYuHPfI
 Project Deliverable 3 youtube link : https://www.youtube.com/watch?v=NGrLUSlP7ok
+(all screen is there and its purpose in video)
 
 Login credentials to login: 
 username: u1
