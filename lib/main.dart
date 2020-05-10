@@ -13,8 +13,8 @@ void main() => runApp(MaterialApp(
       debugShowCheckedModeBanner: false,
       initialRoute: //confessionForm,
       //confessionRoute,
-      //mainPage,
-      loginRoute,
+      mainPage,
+      //loginRoute,
       onGenerateRoute: createRoute,
 ));
 
@@ -39,18 +39,18 @@ class MyAppState extends State<MyApp> {
         appBar: AppBar(
           centerTitle: true,
           title: Text('One UTM'),
-        backgroundColor: Colors.pink[900],
+        backgroundColor: currentTheme.appBar
         ),
         body: Container (
-          color: Colors.pink[600],
+          color: currentTheme.back,
           child: _pageOptions[_selectedPage],
         ),
 
         bottomNavigationBar: CurvedNavigationBar(
           index: 1,
-        backgroundColor: Colors.pink[600],
-        color: Colors.pink[900],
-        buttonBackgroundColor: Colors.orange,
+        backgroundColor: currentTheme.back,
+        color: currentTheme.appBar,
+        buttonBackgroundColor: currentTheme.navi,
         items: <Widget>[
           Icon(Icons.settings, size: 30),
           Icon(Icons.home, size: 50),

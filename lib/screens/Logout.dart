@@ -21,10 +21,10 @@ class _MyHomePageState extends State<Logout> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Are you sure you want to log out ? "),
-        backgroundColor: Colors.pink[900],
+        backgroundColor: currentTheme.appBar
         ),
           body:  Container (
-          color: Colors.pink[600],
+          color: currentTheme.back,
           child: Center(
           child: Row(
           mainAxisAlignment: MainAxisAlignment.center,

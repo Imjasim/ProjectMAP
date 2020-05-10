@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../constants.dart';
 
 class Settings extends StatefulWidget {
   @override
@@ -17,9 +18,9 @@ class SettingsPage extends State<Settings> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home:Scaffold(
-        backgroundColor: Colors.pink[600],
+        backgroundColor: currentTheme.back,
         body: Container (
-          //color: Colors.pink[600], 
+          //color: currentTheme.back, 
         
           child: ListView(
             padding: EdgeInsets.only(left: 10.0,top: 10.0),
@@ -34,6 +35,28 @@ class SettingsPage extends State<Settings> {
           ),
           _buildSwitch('Receive Notification', _noti,'noti'),
           _buildSwitch('Receive Newsletter', _news, 'news'),
+          Text(
+                    "Theme Settings",
+                    style: TextStyle(
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.indigo,
+                    ),
+          ),
+          ListTile(
+            title: Text('ee'),
+            subtitle: Text('dc'),
+            trailing: DropdownButton<MyTheme>(
+              //value: Theme.
+                items: myThemes.map((value) => DropdownMenuItem(
+                value: value,
+                child: new Text(value.name),
+              ),
+            ).toList(),
+            onChanged: (newValue) =>
+          setState(() => currentTheme = newValue),
+            ),
+          ),
           const SizedBox(height: 20.0),
           Card(
                     elevation: 4.0,

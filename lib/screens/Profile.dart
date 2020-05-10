@@ -9,7 +9,7 @@ class Profile extends StatelessWidget {
 
       home:Scaffold(
           body: Container (
-          color: Colors.pink[600],
+          color: currentTheme.back,
           child: Center(
           child: ListView(
               children: <Widget>[

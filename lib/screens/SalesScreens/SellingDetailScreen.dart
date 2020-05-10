@@ -30,7 +30,7 @@ class SellingDetailScreenState extends State<SellingDetailScreen> {
         ),
           centerTitle: true,
           title: Text('One UTM'),
-        backgroundColor: Colors.pink[900],
+        backgroundColor: currentTheme.appBar,
         actions: <Widget>[
           PopupMenuButton<String>(
             onSelected: choiceAction,

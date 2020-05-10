@@ -18,7 +18,7 @@ class HomeState extends State<Home> {
 
       home:Scaffold(
         body: Container (
-          color: Colors.pink[600],
+          color: currentTheme.back,
           child: Column(
           children: <Widget> [
             _listTile('Confession', 'Place to inform', confessionRoute),

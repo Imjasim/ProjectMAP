@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:project_map/model/mock_data.dart';
 import 'package:project_map/model/sales_class.dart';
+import '../constants.dart';
 
 
 class NewSalesForm extends StatelessWidget {
@@ -13,7 +14,7 @@ class NewSalesForm extends StatelessWidget {
       resizeToAvoidBottomInset: false,
         appBar: AppBar(
           title: Text(appTitle),
-          backgroundColor: Colors.pink[900],
+          backgroundColor: currentTheme.appBar
         ),
         body: SalesForm(),
     );

@@ -51,10 +51,10 @@ class SellingScreenState extends State<SellingScreen> {
         appBar: AppBar(
           centerTitle: true,
           title: Text('One UTM'),
-        backgroundColor: Colors.pink[900],
+        backgroundColor: currentTheme.appBar,
         ),
         body: Container (
-          color: Colors.pink[600],
+          color: currentTheme.back,
           child: ListView.separated(
         itemCount: _data.length,
         itemBuilder: (context, index) => Dismissible (
