@@ -44,8 +44,8 @@ class SettingsPage extends State<Settings> {
                     ),
           ),
           ListTile(
-            title: Text('ee'),
-            subtitle: Text('dc'),
+            title: Text('Theme Colour'),
+            //subtitle: Text('Select theme colour'),
             trailing: DropdownButton<MyTheme>(
               //value: Theme.
                 items: myThemes.map((value) => DropdownMenuItem(
