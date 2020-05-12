@@ -31,9 +31,11 @@ class EventScreenState extends State<EventScreen> {
   }
 
   //navigation method when user clicks on the content tile
-  void _navigateEdit(List events,int index) async {
+  void _navigateEdit(List events,int index, bool edit) async {
     final returnData = await Navigator.pushNamed(context, eventDetailsRoute, 
-          arguments: Event.copy(events[index])
+          arguments: {
+            '_data': Event.copy(events[index]),
+             'editable': edit},
           );
 
     if (returnData != null) {
@@ -85,7 +87,7 @@ class EventScreenState extends State<EventScreen> {
                     .showSnackBar(SnackBar(content: Text("Event dismissed")));
           }
           else if (direction == DismissDirection.startToEnd ) {
-            _navigateEdit(_data, index);
+            _navigateEdit(_data, index, true);
           }
           return null;
           },
@@ -116,7 +118,7 @@ class EventScreenState extends State<EventScreen> {
           leading: Icon(Icons.bookmark_border, size: 50),
           title: Text(events[index].eventName),
           subtitle: Text(events[index].description),
-          onTap: () => _navigateEdit(events, index),
+          onTap: () => _navigateEdit(events, index, false),
         ),
   );
   }

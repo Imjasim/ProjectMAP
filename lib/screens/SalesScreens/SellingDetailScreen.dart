@@ -4,19 +4,21 @@ import '../../constants.dart';
 
 class SellingDetailScreen extends StatefulWidget {
   final Sales _data;
+  final bool editable;
 
-  SellingDetailScreen(this._data);
+  SellingDetailScreen(this._data, this.editable);
 
   
 
   @override
   SellingDetailScreenState createState(){
-    return SellingDetailScreenState();
+    return SellingDetailScreenState(editable);
   }
 }
 
 class SellingDetailScreenState extends State<SellingDetailScreen> {
-  bool _isEditable = false;
+  SellingDetailScreenState(this._isEditable);
+  bool _isEditable;
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
 
   @override

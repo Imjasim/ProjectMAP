@@ -31,9 +31,12 @@ class SellingScreenState extends State<SellingScreen> {
   }
 
 //navigation method when user clicks on the content tile
-  void _navigateEdit(List sales,int index) async {
+  void _navigateEdit(List sales,int index, bool edit) async {
     final returnData = await Navigator.pushNamed(context, sellingDetailsRoute, 
-          arguments: Sales.copy(sales[index]));
+          arguments: {
+            '_data': Sales.copy(sales[index]),
+            'editable': edit },
+            );
 
     if (returnData != null) {
       if (returnData ==1){
@@ -84,7 +87,7 @@ class SellingScreenState extends State<SellingScreen> {
                     .showSnackBar(SnackBar(content: Text("Sales dismissed")));
           }
           else if (direction == DismissDirection.startToEnd ) {
-            _navigateEdit(_data, index);
+            _navigateEdit(_data, index, true);
           }
           return null;
           },
@@ -115,7 +118,7 @@ class SellingScreenState extends State<SellingScreen> {
           leading: Icon(Icons.bookmark_border, size: 50),
           title: Text(sales[index].prodName),
           subtitle: Text(sales[index].prodDesc),
-          onTap: () => _navigateEdit(sales, index),
+          onTap: () => _navigateEdit(sales, index, false),
         ),
   );
   }

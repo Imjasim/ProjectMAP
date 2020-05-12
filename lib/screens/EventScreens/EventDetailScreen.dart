@@ -4,19 +4,21 @@ import '../../constants.dart';
 
 class EventDetailScreen extends StatefulWidget {
   final Event _data;
+  final bool editable;
 
-  EventDetailScreen(this._data);
+  EventDetailScreen(this._data, this.editable);
 
   
 
   @override
   EventDetailScreenState createState(){
-    return EventDetailScreenState();
+    return EventDetailScreenState(editable);
   }
 }
 
 class EventDetailScreenState extends State<EventDetailScreen> {
-  bool _isEditable = false;
+  EventDetailScreenState(this._isEditable);
+  bool _isEditable;
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
 
   @override

@@ -22,10 +22,10 @@ const String salesForm = '/SalesForm';
 MyTheme currentTheme = MyTheme ('Red', Colors.pink[600], Colors.orange, Colors.pink[900]);
 
 class MyTheme {
-  Color back;
-  Color appBar;
-  Color navi;
-  String name;
+  Color back; //Colour for app background and above the icon in navigation bar
+  Color appBar; //colour for app bar and bottom navigation bar
+  Color navi; //Colour for the icon in navigation bar
+  String name; //Name of the theme to display
 
   MyTheme (this.name, this.back, this.navi, this.appBar);
 }

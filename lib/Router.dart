@@ -98,12 +98,12 @@ Route<dynamic> createRoute(settings) {
 
       case eventDetailsRoute:
       return MaterialPageRoute(
-        builder: (context) => EventDetailScreen(settings.arguments)
+        builder: (context) => EventDetailScreen(settings.arguments['_data'], settings.arguments['editable'])
       );
 
       case sellingDetailsRoute:
       return MaterialPageRoute(
-        builder: (context) => SellingDetailScreen(settings.arguments)
+        builder: (context) => SellingDetailScreen(settings.arguments['_data'], settings.arguments['editable'])
       );
   }
   return null;
