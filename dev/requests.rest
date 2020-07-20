@@ -1,11 +1,18 @@
 # REST API Server on Local Firebase
- @baseUrl = http://localhost:5001/projectmap-f4c90/us-central1/api
+# @baseUrl = http://localhost:5001/projectmap-f4c90/us-central1/api
 
 # REST API Server on Live Firebase
-# @baseUrl = https://us-central1-jumail-backend-firebase-rest.cloudfunctions.net/api
+ @baseUrl = https://us-central1-projectmap-f4c90.cloudfunctions.net/api
+
 
 ### Getting the list of selling
 GET {{baseUrl}}/selling
+
+### Getting the list of event
+GET {{baseUrl}}/event
+
+### Getting the list of confession
+GET {{baseUrl}}/confession
 
 ###  Getting a selling of given id
 GET {{baseUrl}}/selling/bOEa49Ob2fNfee2AwX83
@@ -21,6 +28,27 @@ Content-Type: application/json
 
 }
 
+###  Create a new event
+POST {{baseUrl}}/event/
+Content-Type: application/json
+
+{
+    "eventName": "FESKO", 
+    "venue": "Padang KAWAD", 
+    "time": "10/10/2020-17/10/2020", 
+    "description": "Fiesta Konvokesyen held in order to celebrate the students being graduated"
+}
+
+###  Create a new confession
+POST {{baseUrl}}/confession/
+Content-Type: application/json
+
+{
+    "username": "Jasim", 
+    "subject": "Fight at Arked Lestari", 
+    "content": "There was a fight between shop staff and UTM student at arked lestari due to food was served late"
+
+}
 ### Update the status of a given selling 
 PATCH {{baseUrl}}/selling/db0hlDNqE8kNNnc2U2Ik
 Content-Type: application/json
@@ -39,4 +67,4 @@ Content-Type: application/json
 }
 
 ### Deleting a given selling
-DELETE {{baseUrl}}/selling/sQ9efkAJlws6KMfCjcKo
+DELETE {{baseUrl}}/selling/YqoainV4mkMan2lKNfuk

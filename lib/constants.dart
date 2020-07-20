@@ -17,6 +17,7 @@ const String sellingDetailsRoute = '/sellingDetailsPage';
 const String confessionForm = '/confessionForm';
 const String eventForm = '/EventForm';
 const String salesForm = '/SalesForm';
+const String servicesRoute = '/services';
 
 //Constants for theme colour
 MyTheme currentTheme = MyTheme ('Red', Colors.pink[600], Colors.orange, Colors.pink[900]);
