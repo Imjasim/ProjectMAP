@@ -4,13 +4,13 @@
 # REST API Server on Live Firebase
 # @baseUrl = https://us-central1-jumail-backend-firebase-rest.cloudfunctions.net/api
 
-### Getting the list of todos
+### Getting the list of selling
 GET {{baseUrl}}/selling
 
-###  Getting a todo of given id
+###  Getting a selling of given id
 GET {{baseUrl}}/selling/bOEa49Ob2fNfee2AwX83
 
-###  Create a new todo
+###  Create a new selling
 POST {{baseUrl}}/selling/
 Content-Type: application/json
 
@@ -21,7 +21,7 @@ Content-Type: application/json
 
 }
 
-### Update the status of a given todo (whether is completed or not)
+### Update the status of a given selling 
 PATCH {{baseUrl}}/selling/db0hlDNqE8kNNnc2U2Ik
 Content-Type: application/json
 
@@ -30,7 +30,7 @@ Content-Type: application/json
 }
 
 
-### Replace the entire fields of a given todo
+### Replace the entire fields of a given selling
 PUT {{baseUrl}}/selling/sQ9efkAJlws6KMfCjcKo
 Content-Type: application/json
 
@@ -38,5 +38,5 @@ Content-Type: application/json
     "prodPrice": "RM 60.00"
 }
 
-### Deleting a given todo
+### Deleting a given selling
 DELETE {{baseUrl}}/selling/sQ9efkAJlws6KMfCjcKo
