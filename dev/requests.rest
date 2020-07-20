@@ -1,0 +1,42 @@
+# REST API Server on Local Firebase
+ @baseUrl = http://localhost:5001/projectmap-f4c90/us-central1/api
+
+# REST API Server on Live Firebase
+# @baseUrl = https://us-central1-jumail-backend-firebase-rest.cloudfunctions.net/api
+
+### Getting the list of todos
+GET {{baseUrl}}/selling
+
+###  Getting a todo of given id
+GET {{baseUrl}}/selling/bOEa49Ob2fNfee2AwX83
+
+###  Create a new todo
+POST {{baseUrl}}/selling/
+Content-Type: application/json
+
+{
+    "prodName": "Jasim", 
+    "prodPrice": "RM 50.00", 
+    "prodDesc": "Classic pen ,convenient to write and must to be own one s"
+
+}
+
+### Update the status of a given todo (whether is completed or not)
+PATCH {{baseUrl}}/selling/db0hlDNqE8kNNnc2U2Ik
+Content-Type: application/json
+
+{
+    "prodPrice": "RM 60.00"
+}
+
+
+### Replace the entire fields of a given todo
+PUT {{baseUrl}}/selling/sQ9efkAJlws6KMfCjcKo
+Content-Type: application/json
+
+{
+    "prodPrice": "RM 60.00"
+}
+
+### Deleting a given todo
+DELETE {{baseUrl}}/selling/sQ9efkAJlws6KMfCjcKo
