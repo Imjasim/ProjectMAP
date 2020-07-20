@@ -2,6 +2,8 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 import '../model/confession_class.dart';
+import '../model/event_class.dart';
+import '../model/sales_class.dart';
 
 class DataService {
   //  Localhost JSON Server
@@ -86,6 +88,56 @@ class DataService {
   // TODO 8: Complete this method. It is meant for deleting a given TODO  from the server
   Future deleteConfession({String id}) async {
     await delete('confession/$id');
+  }
+
+  Future<List<Event>> getEventList() async {
+    final listJson = await get('event');
+
+    return (listJson as List)
+        .map((itemJson) => Event.fromJson(itemJson))
+        .toList();
+  }
+
+  // TODO 6: Complete this method. It is meant for updating the status of a given TODO  (whether is completed or not) in the server
+  Future<Event> updateEventStatus({String id, Event event}) async {
+    final json = await patch('event/$id', data: event);
+    return Event.fromJson(json);
+  }
+
+  // TODO 7: Complete this method. It is meant for creating a new TODO  in the server
+  Future<Event> createEvent({Event event}) async {
+    final json = await post('event', data: event);
+    return Event.fromJson(json);
+  }
+
+  // TODO 8: Complete this method. It is meant for deleting a given TODO  from the server
+  Future deleteEvent({String id}) async {
+    await delete('event/$id');
+  }
+
+  Future<List<Sales>> getSalesList() async {
+    final listJson = await get('selling');
+
+    return (listJson as List)
+        .map((itemJson) => Sales.fromJson(itemJson))
+        .toList();
+  }
+
+  // TODO 6: Complete this method. It is meant for updating the status of a given TODO  (whether is completed or not) in the server
+  Future<Sales> updateSalesStatus({String id, Sales sales}) async {
+    final json = await patch('selling/$id', data: sales);
+    return Sales.fromJson(json);
+  }
+
+  // TODO 7: Complete this method. It is meant for creating a new TODO  in the server
+  Future<Sales> createSales({Sales sales}) async {
+    final json = await post('selling', data: sales);
+    return Sales.fromJson(json);
+  }
+
+  // TODO 8: Complete this method. It is meant for deleting a given TODO  from the server
+  Future deleteSales({String id}) async {
+    await delete('selling/$id');
   }
 }
 

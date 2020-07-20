@@ -15,7 +15,7 @@ GET {{baseUrl}}/event
 GET {{baseUrl}}/confession
 
 ###  Getting a selling of given id
-GET {{baseUrl}}/selling/bOEa49Ob2fNfee2AwX83
+GET {{baseUrl}}/confession/7ohXHBzLaqlg2l1QHb8R
 
 ###  Create a new selling
 POST {{baseUrl}}/selling/
@@ -50,11 +50,11 @@ Content-Type: application/json
 
 }
 ### Update the status of a given selling 
-PATCH {{baseUrl}}/selling/db0hlDNqE8kNNnc2U2Ik
+PATCH {{baseUrl}}/event/0r1LjdDLIPGeoWbT7NBr
 Content-Type: application/json
 
 {
-    "prodPrice": "RM 60.00"
+    "time": "10/10/2020-15/10/2020"
 }
 
 

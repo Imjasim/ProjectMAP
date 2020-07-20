@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:project_map/model/confession_class.dart';
 import '../../constants.dart';
+import '../../services/data_service.dart';
 
 class ConfessionScreen extends StatefulWidget {
   final List _data;
@@ -45,6 +46,18 @@ class ConfessionScreenState extends State<ConfessionScreen> {
 
   @override
   Widget build(BuildContext context) {
+    return FutureBuilder<List<Confession>>(
+        future: dataService.getConfessionList(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            _data = snapshot.data;
+            return _buildMainScreen();
+          }
+          return _buildFetchingDataScreen();
+        });
+  } 
+  
+  Scaffold _buildMainScreen() {
     return Scaffold(
         appBar: AppBar(
           centerTitle: true,
@@ -67,6 +80,8 @@ class ConfessionScreenState extends State<ConfessionScreen> {
             ),
           confirmDismiss: (direction) {
             if (direction == DismissDirection.endToStart ) {
+              dataService.deleteConfession(
+                  id: _data[index].id); 
             setState(() {
               _data.removeAt(index);
             });
@@ -107,4 +122,18 @@ class ConfessionScreenState extends State<ConfessionScreen> {
   );
   }
 
+Scaffold _buildFetchingDataScreen() {
+    return Scaffold(
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            CircularProgressIndicator(),
+            SizedBox(height: 50),
+            Text('Fetching todo... Please wait'),
+          ],
+        ),
+      ),
+    );
+  }
 }

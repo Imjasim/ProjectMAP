@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:project_map/model/event_class.dart';
 import '../../constants.dart';
+import '../../services/data_service.dart';
+
 
 class EventDetailScreen extends StatefulWidget {
   final Event _data;
@@ -138,6 +140,8 @@ class EventDetailScreenState extends State<EventDetailScreen> {
         onSaved: (String value)
         {
           widget._data.description = value;
+          Event newEvent = new Event( widget._data.id, editText1.text, editText2.text, editText3.text, editText4.text);
+          dataService.updateEventStatus(id:  widget._data.id, event: newEvent);
         },
         ),
         ],

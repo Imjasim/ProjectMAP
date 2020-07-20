@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:project_map/model/mock_data.dart';
 import 'package:project_map/model/sales_class.dart';
 import '../constants.dart';
+import '../services/data_service.dart';
 
 
 class NewSalesForm extends StatelessWidget {
@@ -85,7 +86,9 @@ class SalesFormState extends State<SalesForm>{
                  onPressed: () 
                  {
                    if (_formKey.currentState.validate()) {
-                  newSales = new Sales( editText1.text, editText2.text, editText3.text);
+                  newSales = new Sales('1234', editText1.text, editText2.text, editText3.text);
+                  dataService.createSales(
+            sales: newSales,);
                   salesData.add(newSales); 
                   Navigator.of(context).pop(salesData );
                   }

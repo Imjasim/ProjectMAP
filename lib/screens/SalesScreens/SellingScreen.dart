@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:project_map/model/sales_class.dart';
 import '../../constants.dart';
+import '../../services/data_service.dart';
+
 
 class SellingScreen extends StatefulWidget {
   final List _data;
@@ -50,6 +52,18 @@ class SellingScreenState extends State<SellingScreen> {
 
   @override
   Widget build(BuildContext context) {
+    return FutureBuilder<List<Sales>>(
+        future: dataService.getSalesList(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            _data = snapshot.data;
+            return _buildMainScreen();
+          }
+          return _buildFetchingDataScreen();
+        });
+  } 
+
+   Scaffold _buildMainScreen() {
     return Scaffold(
         appBar: AppBar(
           centerTitle: true,
@@ -80,6 +94,8 @@ class SellingScreenState extends State<SellingScreen> {
             ),
           confirmDismiss: (direction) {
             if (direction == DismissDirection.endToStart ) {
+              dataService.deleteSales(
+                  id: _data[index].id); 
             setState(() {
               _data.removeAt(index);
             });
@@ -121,6 +137,21 @@ class SellingScreenState extends State<SellingScreen> {
           onTap: () => _navigateEdit(sales, index, false),
         ),
   );
+  }
+
+Scaffold _buildFetchingDataScreen() {
+    return Scaffold(
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            CircularProgressIndicator(),
+            SizedBox(height: 50),
+            Text('Fetching todo... Please wait'),
+          ],
+        ),
+      ),
+    );
   }
 
 }

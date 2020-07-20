@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:project_map/model/sales_class.dart';
 import '../../constants.dart';
+import '../../services/data_service.dart';
+
 
 class SellingDetailScreen extends StatefulWidget {
   final Sales _data;
@@ -122,13 +124,15 @@ class SellingDetailScreenState extends State<SellingDetailScreen> {
         onSaved: (String value)
         {
           widget._data.prodDesc = value;
+          Sales newSales = new Sales( widget._data.id, editText1.text, editText2.text, editText3.text);
+          dataService.updateSalesStatus(id:  widget._data.id, sales: newSales);
         },
         ),
         ],
         );
   }
 
- //Implement two buttons to save and cancel the changes made to the content of the confession
+ //Implement two buttons to save and cancel the changes made to the content of the sales
   Widget editable() {
     return Scaffold(
       resizeToAvoidBottomInset: false,
