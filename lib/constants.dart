@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'model/user_class.dart';
 
 const String homeRoute = '/';
 const String mainPage = '/main';
@@ -35,7 +36,8 @@ class MyTheme {
     MyTheme ('Blue', Colors.blue[600], Colors.green, Colors.blue[900])
   ];
 
-
+//Logged in user session
+User loggedIn;
 //Class for 3 dot menu 
 class DotMenu {
   static const String edit = 'Edit'; 

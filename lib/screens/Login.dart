@@ -80,6 +80,7 @@ class Login extends StatefulWidget {
               }
                 //if ( _data[i].email == myController.text && _data[i].username == myController2.text){
                   if (myController.text == _data[i].email && myController2.text == _data[i].username){
+                    loggedIn = _data[i];
                    Navigator.pushReplacementNamed(context,splashRoute);
                 } else {
                    showDialog(context: context,
