@@ -17,6 +17,8 @@ GET {{baseUrl}}/confession
 ###  Getting a selling of given id
 GET {{baseUrl}}/confession/7ohXHBzLaqlg2l1QHb8R
 
+### Getting the list of selling
+GET {{baseUrl}}/user
 ###  Create a new selling
 POST {{baseUrl}}/selling/
 Content-Type: application/json

@@ -2,7 +2,7 @@ const db = require("./api/database.js");
 
 async function setupDatabase(req, res, next) {
   // To delete all the collections
-  const collections = ["Selling", "Event", "Confession"];
+  const collections = ["Selling", "Event", "Confession", "User"];
   collections.forEach(async (collection) => await deleteCollection(collection));
 
   // Add documents to the todos collection

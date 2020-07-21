@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart' ;
 import '../constants.dart';
+import 'package:project_map/model/user_class.dart';
+import '../services/data_service.dart';
+
 
 TextStyle style = TextStyle(fontFamily: 'Montserrat', fontSize: 20.0);
+
 class Login extends StatefulWidget {
   @override
   _MyCustomFormState createState() => _MyCustomFormState();
 }
    
     class  _MyCustomFormState extends State<Login> {
-    
+    List _data;
     final myController =TextEditingController() ; 
     final myController2 =TextEditingController();
     
@@ -20,11 +24,24 @@ class Login extends StatefulWidget {
     }
 
       @override
-      
       Widget build(BuildContext context) {
+        return FutureBuilder<List<User>>(
+        future: dataService.getUserList(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            _data = snapshot.data;
+            return _buildMainScreen();
+          } else {
+          //_data = [" ", " ", " ", " ", " ", " "];
+          return _buildMainScreen();
+          }
+        });
+      }
         
-        
-        final emailField = TextField(
+
+        Scaffold _buildMainScreen() {
+          //List _data;
+          final emailField = TextField(
           controller: myController,
           obscureText: false,
           style: style,
@@ -53,10 +70,34 @@ class Login extends StatefulWidget {
             minWidth: MediaQuery.of(context).size.width,
             padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
             onPressed: () {
-                if ( myController.text == "u1" && myController2.text =="u2" ){
+              // snackBar = SnackBar(
+               // content: Text("Login Verified"));
+                //Scaffold.of(context).showSnackBar(snackBar);
+              int i=0;
+                //while (_data[i].email!= myController.text) {
+                  while (i<_data.length && myController.text != _data[i].email) {
+                      i++;
+              }
+                //if ( _data[i].email == myController.text && _data[i].username == myController2.text){
+                  if (myController.text == _data[i].email && myController2.text == _data[i].username){
                    Navigator.pushReplacementNamed(context,splashRoute);
                 } else {
-                   // Navigator.pushReplacementNamed(context,"/Login");
+                   showDialog(context: context,
+                      builder : (BuildContext context ){
+                            return AlertDialog (
+                              title: Text("Wrong Password! Please try again"),
+                              actions: <Widget>[
+                              FlatButton(
+                                  child: Text("Close"),
+                                  onPressed: (){
+                                  Navigator.pushReplacementNamed(context,"/Login");
+                               })
+                             ],
+                          );
+                        }
+                      );
+                    //Navigator.pushReplacementNamed(context,"/Logout");
+
                 }
           
             
@@ -95,7 +136,7 @@ class Login extends StatefulWidget {
                       Container(
                         height: 35.0,
                       ),
-                      loginButon,
+                      loginButon,                     
                       Container(
                         height: 15.0,
                       ),
@@ -106,5 +147,6 @@ class Login extends StatefulWidget {
             ),
           ),
         );
+        }
+
       }
-    }

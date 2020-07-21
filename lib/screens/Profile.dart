@@ -1,13 +1,44 @@
 import 'package:flutter/material.dart';
+import 'package:project_map/model/user_class.dart';
 import '../constants.dart';
+import '../services/data_service.dart';
 
-class Profile extends StatelessWidget {
+class Profile extends StatefulWidget {
+  //final List _data;
+
+  Profile();
+
+  
+
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
+  ProfileState createState(){
+    return ProfileState();//_data);
+  }
+}
 
-      home:Scaffold(
+class ProfileState extends State<Profile> {
+  
+
+  //ProfileState();//this._data);
+
+  
+ Widget build(BuildContext context) {
+    return FutureBuilder<List<User>>(
+        future: dataService.getUserList(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            List _data = snapshot.data;
+            return _buildMainScreen();
+          }
+          return _buildMainScreen();
+        });
+  } 
+    //return MaterialApp(
+     // debugShowCheckedModeBanner: false,
+
+     Scaffold _buildMainScreen() {
+
+    return Scaffold(
           body: Container (
           color: currentTheme.back,
           child: Center(
@@ -71,7 +102,6 @@ class Profile extends StatelessWidget {
           ),
         ),
          
-      ),
     );
   }
 

@@ -4,6 +4,8 @@ import 'package:http/http.dart' as http;
 import '../model/confession_class.dart';
 import '../model/event_class.dart';
 import '../model/sales_class.dart';
+import '../model/user_class.dart';
+
 
 class DataService {
   //  Localhost JSON Server
@@ -139,6 +141,32 @@ class DataService {
   Future deleteSales({String id}) async {
     await delete('selling/$id');
   }
+
+  Future<List<User>> getUserList() async {
+    final listJson = await get('user');
+
+    return (listJson as List)
+        .map((itemJson) => User.fromJson(itemJson))
+        .toList();
+  }
+
+  // TODO 6: Complete this method. It is meant for updating the status of a given TODO  (whether is completed or not) in the server
+  Future<Sales> updateUserStatus({String id, User user}) async {
+    final json = await patch('user/$id', data: user);
+    return Sales.fromJson(json);
+  }
+
+  // TODO 7: Complete this method. It is meant for creating a new TODO  in the server
+  Future<Sales> createUser({User user}) async {
+    final json = await post('user', data: user);
+    return Sales.fromJson(json);
+  }
+
+  // TODO 8: Complete this method. It is meant for deleting a given TODO  from the server
+  Future deleteUser({String id}) async {
+    await delete('user/$id');
+  }
+
 }
 
 final dataService = DataService();

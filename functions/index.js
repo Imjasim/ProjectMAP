@@ -6,6 +6,7 @@ const app = express();
 const sellingRouter = require("./api/controllers/selling_controller.js");
 const eventRouter = require("./api/controllers/event_controller.js");
 const confessionRouter = require("./api/controllers/confession_controller.js");
+const userRouter = require("./api/controllers/user_controller.js");
 
 
 app.use(express.json());
@@ -15,6 +16,7 @@ app.use("/event", eventRouter);
 
 app.use("/confession", confessionRouter);
 
+app.use("/user", userRouter);
 /*app.get("/tod", (req, res, next) =>
   res.json({ message: "Get a list of todos" })
 );*/
