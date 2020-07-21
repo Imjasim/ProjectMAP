@@ -40,7 +40,6 @@ class Login extends StatefulWidget {
         
 
         Scaffold _buildMainScreen() {
-          //List _data;
           final emailField = TextField(
           controller: myController,
           obscureText: false,
@@ -57,7 +56,7 @@ class Login extends StatefulWidget {
           style: style,
           decoration: InputDecoration(
               contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-              labelText: "Enter your Password",
+              labelText: "Enter your password",
               border:
                   OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
         );
@@ -70,23 +69,32 @@ class Login extends StatefulWidget {
             minWidth: MediaQuery.of(context).size.width,
             padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
             onPressed: () {
-              // snackBar = SnackBar(
-               // content: Text("Login Verified"));
-                //Scaffold.of(context).showSnackBar(snackBar);
               int i=0;
-                //while (_data[i].email!= myController.text) {
                   while (i<_data.length && myController.text != _data[i].email) {
                       i++;
               }
-                //if ( _data[i].email == myController.text && _data[i].username == myController2.text){
                   if (myController.text == _data[i].email && myController2.text == _data[i].username){
                     loggedIn = _data[i];
-                   Navigator.pushReplacementNamed(context,splashRoute);
+                    showDialog(context: context,
+                      builder : (BuildContext context ){
+                            return AlertDialog (
+                              title: Text("Login successful!\nWelcome to ONE UTM"),
+                              actions: <Widget>[
+                              FlatButton(
+                                  child: Text("OK"),
+                                  onPressed: (){
+                                  Navigator.pushReplacementNamed(context,splashRoute);
+                               })
+                             ],
+                          );
+                        }
+                      );
+
                 } else {
                    showDialog(context: context,
                       builder : (BuildContext context ){
                             return AlertDialog (
-                              title: Text("Wrong Password! Please try again"),
+                              title: Text("Wrong Password!\nPlease try again"),
                               actions: <Widget>[
                               FlatButton(
                                   child: Text("Close"),
@@ -97,8 +105,6 @@ class Login extends StatefulWidget {
                           );
                         }
                       );
-                    //Navigator.pushReplacementNamed(context,"/Logout");
-
                 }
           
             
