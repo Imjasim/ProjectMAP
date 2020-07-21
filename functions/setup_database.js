@@ -25,6 +25,10 @@ async function setupDatabase(req, res, next) {
     content: "There was a misunderstanding between lab assistant and FC student which end up both of the had to met the Dean at his office" },
   ]);
 
+  addDocuments("User", [
+    { username: "nabila", name: "NUR NABILA BINTI ZAKARIA", 
+    matricno: "A17CS0159", faculty: "School of Computing", email: "nabilazakaria13@gmail.com", pnum: "60123456789" },
+  ]);
   res.send("Setting Up Database.... Done ");
 }
 

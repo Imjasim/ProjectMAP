@@ -62,6 +62,8 @@ class EventDetailScreenState extends State<EventDetailScreen> {
       });
     }
     else if (choice == DotMenu.delete) {
+      dataService.deleteEvent(
+                  id: widget._data.id); 
       Navigator.pop(context,1);
     }
   }
@@ -140,8 +142,8 @@ class EventDetailScreenState extends State<EventDetailScreen> {
         onSaved: (String value)
         {
           widget._data.description = value;
-          Event newEvent = new Event( widget._data.id, editText1.text, editText2.text, editText3.text, editText4.text);
-          dataService.updateEventStatus(id:  widget._data.id, event: newEvent);
+          Event newEvent = Event( widget._data.id, editText1.text, editText2.text, editText3.text, editText4.text);
+          dataService.updateEventStatus(id: widget._data.id, event: newEvent);
         },
         ),
         ],

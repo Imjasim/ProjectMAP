@@ -63,6 +63,8 @@ class SellingDetailScreenState extends State<SellingDetailScreen> {
       });
     }
     else if (choice == DotMenu.delete) {
+      dataService.deleteSales(
+                  id: widget._data.id); 
       Navigator.pop(context,1);
     }
   }
