@@ -1,13 +1,44 @@
 import 'package:flutter/material.dart';
+import 'package:project_map/model/user_class.dart';
 import '../constants.dart';
+import '../services/data_service.dart';
 
-class Profile extends StatelessWidget {
+class Profile extends StatefulWidget {
+  //final List _data;
+
+  Profile();
+
+  
+
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
+  ProfileState createState(){
+    return ProfileState();//_data);
+  }
+}
 
-      home:Scaffold(
+class ProfileState extends State<Profile> {
+  
+
+  //ProfileState();//this._data);
+
+  
+ Widget build(BuildContext context) {
+    return FutureBuilder<List<User>>(
+        future: dataService.getUserList(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            List _data = snapshot.data;
+            return _buildMainScreen();
+          }
+          return _buildMainScreen();
+        });
+  } 
+    //return MaterialApp(
+     // debugShowCheckedModeBanner: false,
+
+     Scaffold _buildMainScreen() {
+
+    return Scaffold(
           body: Container (
           color: currentTheme.back,
           child: Center(
@@ -41,11 +72,11 @@ class Profile extends StatelessWidget {
                     color: Colors.teal[100],
                   ),
                 ),
-                _buildCard ('NUR NABILA BINTI ZAKARIA', Icons.person),
-                _buildCard ('A17CS0159', Icons.keyboard),
-                _buildCard ('School of Computing', Icons.school),
-                _buildCard ('nabilazakaria13@gmail.com', Icons.email),
-                _buildCard ('+60123456789', Icons.phone),
+                _buildCard (loggedIn.name, Icons.person),
+                _buildCard (loggedIn.matricno, Icons.keyboard),
+                _buildCard (loggedIn.faculty, Icons.school),
+                _buildCard (loggedIn.email, Icons.email),
+                _buildCard (loggedIn.pnum, Icons.phone),
               
                  RaisedButton(
                       onPressed:() {
@@ -71,7 +102,6 @@ class Profile extends StatelessWidget {
           ),
         ),
          
-      ),
     );
   }
 

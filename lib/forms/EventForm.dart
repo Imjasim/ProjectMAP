@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:project_map/model/mock_data.dart';
 import 'package:project_map/model/event_class.dart';
 import '../constants.dart';
+import '../services/data_service.dart';
+
 
 class NewEventForm extends StatelessWidget {
   @override
@@ -100,7 +102,9 @@ class EventFormState extends State<EventForm>{
                  onPressed: () 
                  {
                    if (_formKey.currentState.validate()) {
-                  newEvent = new Event(editText1.text, editText2.text ,editText3.text,editText4.text);
+                  newEvent = new Event('001', editText1.text, editText2.text ,editText3.text,editText4.text);
+                  dataService.createEvent(
+            event: newEvent,);
                   eventsData.add(newEvent); 
                   Navigator.of(context).pop(eventsData);
                   }

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:project_map/model/event_class.dart';
 import '../../constants.dart';
+import '../../services/data_service.dart';
+
 
 class EventScreen extends StatefulWidget {
   final List _data;
@@ -31,9 +33,11 @@ class EventScreenState extends State<EventScreen> {
   }
 
   //navigation method when user clicks on the content tile
-  void _navigateEdit(List events,int index) async {
+  void _navigateEdit(List events,int index, bool edit) async {
     final returnData = await Navigator.pushNamed(context, eventDetailsRoute, 
-          arguments: Event.copy(events[index])
+          arguments: {
+            '_data': Event.copy(events[index]),
+             'editable': edit},
           );
 
     if (returnData != null) {
@@ -48,6 +52,18 @@ class EventScreenState extends State<EventScreen> {
 
   @override
   Widget build(BuildContext context) {
+    return FutureBuilder<List<Event>>(
+        future: dataService.getEventList(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            _data = snapshot.data;
+            return _buildMainScreen();
+          }
+          return _buildFetchingDataScreen();
+        });
+  } 
+  
+      Scaffold _buildMainScreen() {
     return Scaffold(
         appBar: AppBar(
           centerTitle: true,
@@ -78,6 +94,8 @@ class EventScreenState extends State<EventScreen> {
             ),
           confirmDismiss: (direction) {
             if (direction == DismissDirection.endToStart ) {
+              dataService.deleteEvent(
+                  id: _data[index].id); 
             setState(() {
               _data.removeAt(index);
             });
@@ -85,7 +103,7 @@ class EventScreenState extends State<EventScreen> {
                     .showSnackBar(SnackBar(content: Text("Event dismissed")));
           }
           else if (direction == DismissDirection.startToEnd ) {
-            _navigateEdit(_data, index);
+            _navigateEdit(_data, index, true);
           }
           return null;
           },
@@ -116,9 +134,24 @@ class EventScreenState extends State<EventScreen> {
           leading: Icon(Icons.bookmark_border, size: 50),
           title: Text(events[index].eventName),
           subtitle: Text(events[index].description),
-          onTap: () => _navigateEdit(events, index),
+          onTap: () => _navigateEdit(events, index, false),
         ),
   );
+  }
+
+Scaffold _buildFetchingDataScreen() {
+    return Scaffold(
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            CircularProgressIndicator(),
+            SizedBox(height: 50),
+            Text('Fetching todo... Please wait'),
+          ],
+        ),
+      ),
+    );
   }
 
 }

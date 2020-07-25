@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:project_map/model/mock_data.dart';
 import 'package:project_map/model/confession_class.dart';
 import '../constants.dart';
-
+import '../services/data_service.dart';
 
 class NewConfessionForm extends StatelessWidget {
   @override
@@ -71,7 +71,9 @@ class ConfessionFormState extends State<ConfessionForm>{
                  onPressed: () 
                  {
                    if (_formKey.currentState.validate()) {
-                  newConfession = new Confession('Liknesh', editText1.text, editText2.text);
+                  newConfession = new Confession('001', 'Liknesh', editText1.text, editText2.text);
+                  dataService.createConfession(
+            confession: newConfession,);
                   confessionsData.add(newConfession); 
                   Navigator.of(context).pop(confessionsData);
                   }

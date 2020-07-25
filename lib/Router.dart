@@ -15,6 +15,7 @@ import 'forms/confessionnForm.dart';
 import 'package:project_map/screens/EventScreens/EventScreen.dart';
 import 'forms/EventForm.dart';
 import 'forms/SalesForm.dart';
+//import 'services/data_service.dart';
 
 import 'constants.dart';
 
@@ -98,13 +99,18 @@ Route<dynamic> createRoute(settings) {
 
       case eventDetailsRoute:
       return MaterialPageRoute(
-        builder: (context) => EventDetailScreen(settings.arguments)
+        builder: (context) => EventDetailScreen(settings.arguments['_data'], settings.arguments['editable'])
       );
 
       case sellingDetailsRoute:
       return MaterialPageRoute(
-        builder: (context) => SellingDetailScreen(settings.arguments)
+        builder: (context) => SellingDetailScreen(settings.arguments['_data'], settings.arguments['editable'])
       );
+
+      /*case servicesRoute:
+      return MaterialPageRoute(
+        builder: (context) => DataService()
+      );*/
   }
   return null;
 }

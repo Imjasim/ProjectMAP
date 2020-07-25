@@ -1,22 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:project_map/model/event_class.dart';
 import '../../constants.dart';
+import '../../services/data_service.dart';
+
 
 class EventDetailScreen extends StatefulWidget {
   final Event _data;
+  final bool editable;
 
-  EventDetailScreen(this._data);
+  EventDetailScreen(this._data, this.editable);
 
   
 
   @override
   EventDetailScreenState createState(){
-    return EventDetailScreenState();
+    return EventDetailScreenState(editable);
   }
 }
 
 class EventDetailScreenState extends State<EventDetailScreen> {
-  bool _isEditable = false;
+  EventDetailScreenState(this._isEditable);
+  bool _isEditable;
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
 
   @override
@@ -58,6 +62,8 @@ class EventDetailScreenState extends State<EventDetailScreen> {
       });
     }
     else if (choice == DotMenu.delete) {
+      dataService.deleteEvent(
+                  id: widget._data.id); 
       Navigator.pop(context,1);
     }
   }
@@ -136,6 +142,8 @@ class EventDetailScreenState extends State<EventDetailScreen> {
         onSaved: (String value)
         {
           widget._data.description = value;
+          Event newEvent = Event( widget._data.id, editText1.text, editText2.text, editText3.text, editText4.text);
+          dataService.updateEventStatus(id: widget._data.id, event: newEvent);
         },
         ),
         ],

@@ -13,8 +13,8 @@ void main() => runApp(MaterialApp(
       debugShowCheckedModeBanner: false,
       initialRoute: //confessionForm,
       //confessionRoute,
-      mainPage,
-      //loginRoute,
+      //mainPage,
+      loginRoute,
       onGenerateRoute: createRoute,
 ));
 
